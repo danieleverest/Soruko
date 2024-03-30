@@ -21,7 +21,7 @@ if (mysqli_num_rows($result) > 0) {
             </td>
             <td>
                 <div class="hstack gap-2 flex-wrap">
-                    <a aria-label="anchor" href="javascript:void(0);" class="text-info fs-14 lh-1 edit-event" data-id="<?php echo $row['id']; ?>"
+                    <a aria-label="anchor" href="javascript:void(0);" class="text-info fs-14 lh-1 edit-event" data-color="<?php echo $row['color']; ?>" data-name="<?php echo $row['event_name']; ?>" data-id="<?php echo $row['id']; ?>"
                         aria-label="Edit Event" data-bs-toggle="modal" data-bs-target="#edit-event">
                         <i class="ri-edit-line"></i>
                     </a>

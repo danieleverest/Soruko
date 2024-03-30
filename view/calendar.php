@@ -74,34 +74,11 @@ if (!isset($_SESSION['info'])) {
                             <div class="card-body p-0">
                                 <div id="external-events"
                                     class="border-bottom p-3 d-flex align-items-center justify-content-between flex-wrap">
-                                    <div
+                                    <?php include 'events_list.php'; ?>
+                                    <!-- <div
                                         class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-primary-transparent">
                                         <div class="fc-event-main text-primary">Calendar Events</div>
-                                    </div>
-                                    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-secondary-transparent"
-                                        data-class="bg-secondary-transparent">
-                                        <div class="fc-event-main text-secondary">Birthday Events</div>
-                                    </div>
-                                    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-success-transparent"
-                                        data-class="bg-success-transparent text-success">
-                                        <div class="fc-event-main text-success">Holiday Calendar</div>
-                                    </div>
-                                    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-info-transparent"
-                                        data-class="bg-info-transparent text-info">
-                                        <div class="fc-event-main text-info">Office Events</div>
-                                    </div>
-                                    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-warning-transparent"
-                                        data-class="bg-warning">
-                                        <div class="fc-event-main text-warning">Other Events</div>
-                                    </div>
-                                    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-danger-transparent"
-                                        data-class="bg-danger">
-                                        <div class="fc-event-main text-danger">Festival Events</div>
-                                    </div>
-                                    <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-teal-transparent"
-                                        data-class="bg-danger">
-                                        <div class="fc-event-main text-teal">Timeline Events</div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -351,14 +328,14 @@ if (!isset($_SESSION['info'])) {
                 });
             });
 
-            document.addEventListener("click", function (event) {
-                if (event.target.classList.contains('edit-event-btn')) {
-                    var eventId = event.target.dataset.id;
-                    var color = event.target.dataset.color;
-                    var eventName = event.target.dataset.name;
+            var editButtons = document.querySelectorAll('.edit-event');
+            editButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    var eventId = this.getAttribute('data-id');
+                    var color = this.getAttribute('data-color');
+                    var eventName = this.getAttribute('data-name');
                     populateEditEventModal(eventId, color, eventName);
-                    new bootstrap.Modal(document.getElementById('edit-event')).show();
-                }
+                });
             });
         });
 
