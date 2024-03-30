@@ -23,10 +23,19 @@ if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
     data-menu-styles="light" data-toggled="close">
 
 <head>
-    <?php include 'components/externalcss.php'; ?>
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
         <?php echo $pageTitle; ?>
     </title>
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+    <meta name="keywords"
+        content="admin dashboard,admin template,admin panel,bootstrap admin dashboard,html template,sales dashboard,dashboard,template dashboard,admin,html and css template,admin dashboard bootstrap,personal dashboard,crypto dashboard,stocks dashboard,admin panel template">
+
+    <!-- end -->
 
     <!-- Favicon -->
     <link rel="icon" href="assets/images/brand-logos/favicon.ico" type="image/x-icon">
@@ -67,15 +76,17 @@ if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
     <!-- End::Switcher -->
 
     <!-- Start::Loader -->
-    <?php include 'components/loader.php'; ?>
+    <div id="loader">
+        <img src="assets/images/media/loader.svg" alt="">
+    </div>
     <!-- Start::Loader -->
 
     <div class="page">
         <!-- Start::app-header -->
-        <?php include 'components/header.php'; ?>
+        <?php include 'components/headerindex.php'; ?>
         <!-- End::app-header -->
         <!-- Start::app-sidebar -->
-        <?php include 'components/aside.php'; ?>
+        <?php include 'components/asideindex.php'; ?>
         <!-- End::app-sidebar -->
         <!-- Start::app-content -->
         <div class="main-content app-content">

@@ -3,10 +3,10 @@
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
         <a href="index.php" class="header-logo">
-            <img src="../assets/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo">
-            <img src="../assets/images/brand-logos/toggle-dark.png" alt="logo" class="toggle-dark">
-            <img src="../assets/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark">
-            <img src="../assets/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo">
+            <img src="assets/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo">
+            <img src="assets/images/brand-logos/toggle-dark.png" alt="logo" class="toggle-dark">
+            <img src="assets/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark">
+            <img src="assets/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo">
         </a>
     </div>
     <!-- End::main-sidebar-header -->
@@ -36,24 +36,25 @@
                         <span class="side-menu__label">Notes</span>
                     </a>
                 </li>
-                <li class="slide">
-                    <a href="calendar.php" class="side-menu__item">
+                <li class="slide has-sub">
+                    <!-- <a href="view/calendar.php" class="side-menu__item">
                         <i class="bi bi-calendar side-menu__icon"></i>
                         <span class="side-menu__label">Calendar</span>
-                    </a>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
+                    </a> -->
 
-                    <!-- <a href="javascript:void(0);" class="side-menu__item">
+                    <a href="javascript:void(0);" class="side-menu__item">
                         <i class="bi bi-calendar side-menu__icon"></i>
                         <span class="side-menu__label">Calendar</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i></a>
                     <ul class="slide-menu child2">
                         <li class="slide">
-                            <a href="calendar.php" class="side-menu__item">Calendar</a>
+                            <a href="task-list-view.php" class="side-menu__item">Calendar</a>
                         </li>
                         <li class="slide">
                             <a href="events.php" class="side-menu__item">Events</a>
                         </li>
-                    </ul> -->
+                    </ul>
                 </li>
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">Projects
