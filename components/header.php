@@ -523,16 +523,16 @@
                     aria-labelledby="mainHeaderProfile">
                     <li><a class="dropdown-item d-flex align-items-center" href="profile.php"><i
                                 class="bi bi-person fs-18 me-2 op-7"></i>Profile</a></li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="mail.php"><i
+                    <!-- <li><a class="dropdown-item d-flex align-items-center" href="mail.php"><i
                                 class="bi bi-envelope fs-16 me-2 op-7"></i>Inbox <span
                                 class="ms-auto badge bg-light border text-default">19</span></a></li>
                     <li><a class="dropdown-item d-flex align-items-center" href="to-do-list.php"><i
-                                class="bi bi-check-square fs-16 me-2 op-7"></i>Task Manager</a></li>
+                                class="bi bi-check-square fs-16 me-2 op-7"></i>Task Manager</a></li> -->
                     <li><a class="dropdown-item d-flex align-items-center" href="mail-settings.php"><i
                                 class="bi bi-gear fs-16 me-2 op-7"></i>Settings</a></li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="chat.php"><i
-                                class="bi bi-headset fs-18 me-2 op-7"></i>Support</a></li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="sign-in-cover.php"><i
+                    <!-- <li><a class="dropdown-item d-flex align-items-center" href="chat.php"><i
+                                class="bi bi-headset fs-18 me-2 op-7"></i>Support</a></li> -->
+                    <li><a class="dropdown-item d-flex align-items-center" href="auth/logout.php"><i
                                 class="bi bi-box-arrow-right fs-18 me-2 op-7"></i>Log Out</a></li>
                 </ul>
             </li>

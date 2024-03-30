@@ -1,3 +1,18 @@
+<?php
+$pageTitle = "Home";
+// Start the session
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to login page
+    header("Location: login.php");
+    exit();
+}
+
+// Normal page content below...
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light"
     data-menu-styles="light" data-toggled="close">
@@ -190,7 +205,8 @@
                                 <div class="row gy-2">
                                     <div class="col-xl-2">
                                         <label for="task-id" class="form-label">Color</label>
-                                        <input type="color" class="form-control form-control-color border-0 mt-1" id="task-id" value="#136ad0" title="Choose your color">
+                                        <input type="color" class="form-control form-control-color border-0 mt-1"
+                                            id="task-id" value="#136ad0" title="Choose your color">
                                     </div>
                                     <div class="col-xl-10">
                                         <label for="task-name" class="form-label">Event Name</label>
