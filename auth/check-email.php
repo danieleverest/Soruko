@@ -1,6 +1,7 @@
 <?php require_once "UserController.php"; ?>
+
 <?php
-$pageTitle = "Login";
+$pageTitle = "Check Email";
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-nav-layout="vertical" data-vertical-style="overlay" data-theme-mode="light"
@@ -31,16 +32,18 @@ $pageTitle = "Login";
 </head>
 
 <body class="authentication-background">
+
     <!-- Start Switcher -->
     <?php include '../components/switcher.php'; ?>
+
     <!-- End Switcher -->
 
-    <div class="container">
+    <div class="container-lg">
         <div class="row justify-content-center align-items-center authentication authentication-basic h-100">
             <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12">
                 <div class="card custom-card my-4">
                     <div class="card-body p-5">
-                        <form action="login.php" method="POST" autocomplete="">
+                        <form action="check-email.php" method="POST" autocomplete="off">
 
                             <div class="mb-3 d-flex justify-content-center">
                                 <a href="index.php">
@@ -50,14 +53,15 @@ $pageTitle = "Login";
                                         class="desktop-dark">
                                 </a>
                             </div>
-                            <p class="h5 mb-2 text-center">Sign In</p>
+                            <h2 class="text-center">Forgot Password</h2>
+                            <p class="text-center">Enter your email address</p>
                             <?php
                             if (count($errors) > 0) {
                                 ?>
                                 <div class="alert alert-danger text-center">
                                     <?php
-                                    foreach ($errors as $showerror) {
-                                        echo $showerror;
+                                    foreach ($errors as $error) {
+                                        echo $error;
                                     }
                                     ?>
                                 </div>
@@ -66,41 +70,18 @@ $pageTitle = "Login";
                             ?>
                             <div class="row gy-3">
                                 <div class="col-xl-12">
-                                    <label for="signin-email" class="form-label text-default">Email</label>
+                                    <label for="check-email" class="form-label text-default">Email</label>
                                     <input type="email" name="email" class="form-control form-control-lg"
-                                        id="signin-email" placeholder="Email Address" value="<?php echo $email ?>"
-                                        required>
-                                </div>
-                                <div class="col-xl-12 mb-2">
-                                    <label for="signin-password" class="form-label text-default d-block">Password
-                                        <a href="check-email.php" class="float-end text-danger">Forget
-                                            password?</a>
-                                    </label>
-                                    <div class="position-relative">
-                                        <input type="password" class="form-control form-control-lg" id="signin-password"
-                                            placeholder="password" required name="password">
-                                        <a href="javascript:void(0);" class="show-password-button text-muted"
-                                            onclick="createpassword('signin-password',this)" id="button-addon2"><i
-                                                class="ri-eye-off-line align-middle"></i></a>
-                                    </div>
-                                    <div class="mt-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label text-muted fw-normal" for="defaultCheck1">
-                                                Remember password ?
-                                            </label>
-                                        </div>
-                                    </div>
+                                        id="check-email" placeholder="Email Address" required>
                                 </div>
                             </div>
                             <div class="d-grid mt-4">
-                                <div class="d-grid mt-4">
-                                    <button class="btn btn-lg btn-primary" type="submit" name="login">Sign In</button>
-                                </div>
+                                <input class="form-control button btn btn-lg btn-primary" type="submit"
+                                    name="check-email" value="Change">
                             </div>
                             <div class="text-center">
-                                <p class="text-muted mt-3 mb-0">Dont have an account? <a href="register.php"
-                                        class="text-primary">Sign Up</a></p>
+                                <p class="text-muted mt-3"><a href="login.php"
+                                        class="text-primary">Back</a>
                             </div>
                         </form>
                     </div>
@@ -108,7 +89,6 @@ $pageTitle = "Login";
             </div>
         </div>
     </div>
-
 
     <!-- Bootstrap JS -->
     <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>

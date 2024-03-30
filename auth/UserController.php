@@ -69,14 +69,15 @@ if (isset($_POST['check-email'])) {
         $info = "Please create a new password that you don't use on any other site.";
         $_SESSION['email'] = $email;
         $_SESSION['info'] = $info;
-        header('location: new-password.php');
+        header('location: reset-password.php');
+        exit();
     } else {
         $errors['email'] = "This email address does not exist!";
     }
 }
 
 //if user click change password button
-if (isset($_POST['change-password'])) {
+if (isset($_POST['reset-password'])) {
     $_SESSION['info'] = "";
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
@@ -89,10 +90,9 @@ if (isset($_POST['change-password'])) {
         $run_query = mysqli_query($conn, $update_pass);
 
         if ($run_query) {
-            $info = "Your password changed. Now you can login with your new password.";
-            $_SESSION['info'] = $info;
-
+            $_SESSION['info'] = "Your password changed. Now you can login with your new password.";
             header('Location: password-changed.php');
+            exit();
         } else {
             $errors['db-error'] = "Failed to change your password!";
         }
@@ -101,7 +101,9 @@ if (isset($_POST['change-password'])) {
 
 //if login now button click
 if (isset($_POST['login-now'])) {
+    // Redirect to login page
     header('Location: login.php');
+    exit(); // Always exit after a header redirect
 }
 
 // $_SESSION['errors'] = $errors;
