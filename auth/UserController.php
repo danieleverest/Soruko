@@ -69,7 +69,8 @@ if (isset($_POST['check-email'])) {
         $info = "Please create a new password that you don't use on any other site.";
         $_SESSION['email'] = $email;
         $_SESSION['info'] = $info;
-        header('location: new-password.php');
+        header('location: reset-password.php');
+        exit();
     } else {
         $errors['email'] = "This email address does not exist!";
     }
@@ -78,19 +79,8 @@ if (isset($_POST['check-email'])) {
 //if user click change password button
 if (isset($_POST['reset-password'])) {
     $_SESSION['info'] = "";
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
-    $check_email = "SELECT * FROM users WHERE email='$email'";
-    $run_sql = mysqli_query($conn, $check_email);
-    if (mysqli_num_rows($run_sql) > 0) {
-        $info = "Please create a new password that you don't use on any other site.";
-        $_SESSION['email'] = $email;
-        $_SESSION['info'] = $info;
-        header('location: new-password.php');
-    } else {
-        $errors['email'] = "This email address does not exist!";
-    }
     if ($password !== $cpassword) {
         $errors['password'] = "Confirm password not matched!";
     } else {
@@ -100,10 +90,9 @@ if (isset($_POST['reset-password'])) {
         $run_query = mysqli_query($conn, $update_pass);
 
         if ($run_query) {
-            $info = "Your password changed. Now you can login with your new password.";
-            $_SESSION['info'] = $info;
-
+            $_SESSION['info'] = "Your password changed. Now you can login with your new password.";
             header('Location: password-changed.php');
+            exit();
         } else {
             $errors['db-error'] = "Failed to change your password!";
         }
@@ -112,7 +101,9 @@ if (isset($_POST['reset-password'])) {
 
 //if login now button click
 if (isset($_POST['login-now'])) {
+    // Redirect to login page
     header('Location: login.php');
+    exit(); // Always exit after a header redirect
 }
 
 // $_SESSION['errors'] = $errors;

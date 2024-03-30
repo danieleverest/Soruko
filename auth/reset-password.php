@@ -55,16 +55,19 @@ $pageTitle = "Reset Password";
                             </div>
                             <p class="h5 mb-2 text-center">Reset Password</p>
                             <?php
-                            if (isset($_SESSION['info'])) {
+                            if (isset($_SESSION['info']) && !empty($_SESSION['info'])) {
                                 ?>
                                 <div class="alert alert-success text-center">
                                     <?php echo $_SESSION['info']; ?>
                                 </div>
                                 <?php
+                                unset($_SESSION['info']); // Clear info message after displaying
                             }
                             ?>
                             <?php
-                            if (count($errors) > 0) {
+                            if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
+                                $errors = $_SESSION['errors'];
+                                unset($_SESSION['errors']); // Clear errors after displaying
                                 ?>
                                 <div class="alert alert-danger text-center">
                                     <?php
@@ -88,16 +91,11 @@ $pageTitle = "Reset Password";
                                     </div>
                                 </div> -->
                                 <div class="col-xl-12">
-                                    <label for="check-email" class="form-label text-default">Email</label>
-                                    <input type="email" name="email" class="form-control form-control-lg"
-                                        id="check-email" placeholder="Email Address" required>
-                                </div>
-                                <div class="col-xl-12">
                                     <label for="reset-newpassword" name="password" class="form-label text-default">New
                                         Password</label>
                                     <div class="position-relative">
                                         <input type="password" class="form-control form-control-lg"
-                                            id="reset-newpassword" placeholder="new password" required>
+                                            id="reset-newpassword" name="password" placeholder="new password" required>
                                         <a href="javascript:void(0);" class="show-password-button text-muted"
                                             onclick="createpassword('reset-newpassword',this)" id="button-addon21"><i
                                                 class="ri-eye-off-line align-middle"></i></a>
@@ -129,7 +127,7 @@ $pageTitle = "Reset Password";
                                     name="reset-password" value="Change">
                             </div>
                             <div class="text-center">
-                                <p class="text-muted mt-3">Already have an account? <a href="sign-in-basic.php"
+                                <p class="text-muted mt-3">Already have an account? <a href="login.php"
                                         class="text-primary">Sign In</a></p>
                             </div>
                         </form>

@@ -6,6 +6,7 @@ $pageTitle = "Check Email";
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-nav-layout="vertical" data-vertical-style="overlay" data-theme-mode="light"
     data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
 <head>
 
     <?php include '../components/externalcss.php'; ?>
@@ -42,7 +43,7 @@ $pageTitle = "Check Email";
             <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12">
                 <div class="card custom-card my-4">
                     <div class="card-body p-5">
-                        <form action="reset-password.php" method="POST" autocomplete="off">
+                        <form action="check-email.php" method="POST" autocomplete="off">
 
                             <div class="mb-3 d-flex justify-content-center">
                                 <a href="index.php">
@@ -52,23 +53,15 @@ $pageTitle = "Check Email";
                                         class="desktop-dark">
                                 </a>
                             </div>
-                            <p class="h5 mb-2 text-center">Reset Password</p>
-                            <?php
-                            if (isset($_SESSION['info'])) {
-                                ?>
-                                <div class="alert alert-success text-center">
-                                    <?php echo $_SESSION['info']; ?>
-                                </div>
-                                <?php
-                            }
-                            ?>
+                            <h2 class="text-center">Forgot Password</h2>
+                            <p class="text-center">Enter your email address</p>
                             <?php
                             if (count($errors) > 0) {
                                 ?>
                                 <div class="alert alert-danger text-center">
                                     <?php
-                                    foreach ($errors as $showerror) {
-                                        echo $showerror;
+                                    foreach ($errors as $error) {
+                                        echo $error;
                                     }
                                     ?>
                                 </div>
@@ -76,60 +69,19 @@ $pageTitle = "Check Email";
                             }
                             ?>
                             <div class="row gy-3">
-                                <!-- <div class="col-xl-12">
-                                    <label for="reset-password" class="form-label text-default">Current Password</label>
-                                    <div class="position-relative">
-                                        <input type="password" class="form-control form-control-lg" id="reset-password"
-                                            placeholder="current password">
-                                        <a href="javascript:void(0);" class="show-password-button text-muted"
-                                            onclick="createpassword('reset-password',this)" id="button-addon2"><i
-                                                class="ri-eye-off-line align-middle"></i></a>
-                                    </div>
-                                </div> -->
                                 <div class="col-xl-12">
                                     <label for="check-email" class="form-label text-default">Email</label>
                                     <input type="email" name="email" class="form-control form-control-lg"
                                         id="check-email" placeholder="Email Address" required>
                                 </div>
-                                <div class="col-xl-12">
-                                    <label for="reset-newpassword" name="password" class="form-label text-default">New
-                                        Password</label>
-                                    <div class="position-relative">
-                                        <input type="password" class="form-control form-control-lg"
-                                            id="reset-newpassword" placeholder="new password" required>
-                                        <a href="javascript:void(0);" class="show-password-button text-muted"
-                                            onclick="createpassword('reset-newpassword',this)" id="button-addon21"><i
-                                                class="ri-eye-off-line align-middle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-12 mb-2">
-                                    <label for="reset-confirmpassword" class="form-label text-default">Confirm
-                                        Password</label>
-                                    <div class="position-relative">
-                                        <input type="password" class="form-control form-control-lg"
-                                            id="reset-confirmpassword" name="cpassword" placeholder="confirm password"
-                                            required>
-                                        <a href="javascript:void(0);" class="show-password-button text-muted"
-                                            onclick="createpassword('reset-confirmpassword',this)"
-                                            id="button-addon22"><i class="ri-eye-off-line align-middle"></i></a>
-                                    </div>
-                                    <div class="mt-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label text-muted fw-normal" for="defaultCheck1">
-                                                Remember password ?
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="d-grid mt-4">
                                 <input class="form-control button btn btn-lg btn-primary" type="submit"
-                                    name="reset-password" value="Change">
+                                    name="check-email" value="Change">
                             </div>
                             <div class="text-center">
-                                <p class="text-muted mt-3">Already have an account? <a href="sign-in-basic.php"
-                                        class="text-primary">Sign In</a></p>
+                                <p class="text-muted mt-3"><a href="login.php"
+                                        class="text-primary">Back</a>
                             </div>
                         </form>
                     </div>
