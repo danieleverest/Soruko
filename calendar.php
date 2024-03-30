@@ -1,10 +1,10 @@
 <?php
-$pageTitle = "Home";
+$pageTitle = "Calendar";
 // Start the session
 session_start();
 
 // Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['info'])) {
     // Redirect to login page
     header("Location: login.php");
     exit();
@@ -19,7 +19,41 @@ if (!isset($_SESSION['user_id'])) {
 
 <head>
     <?php include 'components/externalcss.php'; ?>
+    <title>
+        <?php echo $pageTitle; ?>
+    </title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/brand-logos/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Style Css -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+
+    <!-- Icons Css -->
+    <link href="assets/css/icons.css" rel="stylesheet">
+
+    <!-- Choices JS -->
+    <script src="assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Main Theme Js -->
+    <script src="assets/js/main.js"></script>
+
+
+    <!-- Node Waves Css -->
+    <link href="assets/libs/node-waves/waves.min.css" rel="stylesheet">
+
+    <!-- Simplebar Css -->
+    <link href="assets/libs/simplebar/simplebar.min.css" rel="stylesheet">
+
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="assets/libs/@simonwep/pickr/themes/nano.min.css">
+
+    <!-- Choices Css -->
+    <link rel="stylesheet" href="assets/libs/choices.js/public/assets/styles/choices.min.css">
 </head>
 
 <body>

@@ -76,10 +76,21 @@ if (isset($_POST['check-email'])) {
 }
 
 //if user click change password button
-if (isset($_POST['change-password'])) {
+if (isset($_POST['reset-password'])) {
     $_SESSION['info'] = "";
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
+    $check_email = "SELECT * FROM users WHERE email='$email'";
+    $run_sql = mysqli_query($conn, $check_email);
+    if (mysqli_num_rows($run_sql) > 0) {
+        $info = "Please create a new password that you don't use on any other site.";
+        $_SESSION['email'] = $email;
+        $_SESSION['info'] = $info;
+        header('location: new-password.php');
+    } else {
+        $errors['email'] = "This email address does not exist!";
+    }
     if ($password !== $cpassword) {
         $errors['password'] = "Confirm password not matched!";
     } else {
