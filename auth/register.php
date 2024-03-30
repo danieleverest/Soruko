@@ -7,17 +7,11 @@ $pageTitle = "Register";
     data-header-styles="light" data-menu-styles="light" data-toggled="close">
 
 <head>
-    <!-- Meta Data -->
-    <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <?php include '../components/externalcss.php'; ?>
+    
     <title>
         <?php echo $pageTitle; ?>
     </title>
-    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
-    <meta name="Author" content="Spruko Technologies Private Limited">
-    <meta name="keywords"
-        content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
     <!-- Favicon -->
     <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
@@ -57,6 +51,33 @@ $pageTitle = "Register";
                                 </a>
                             </div>
                             <p class="h5 mb-2 text-center">Sign Up</p>
+                            <?php
+                            if (count($errors) == 1) {
+                                ?>
+                                <div class="alert alert-danger text-center">
+                                    <?php
+                                    foreach ($errors as $showerror) {
+                                        echo $showerror;
+                                    }
+                                    ?>
+                                </div>
+                                <?php
+                            } elseif (count($errors) > 1) {
+                                ?>
+                                <div class="alert alert-danger">
+                                    <?php
+                                    foreach ($errors as $showerror) {
+                                        ?>
+                                        <li>
+                                            <?php echo $showerror; ?>
+                                        </li>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
                             <div class="row gy-3">
                                 <div class="col-xl-12">
                                     <label for="signup-firstname" class="form-label text-default">First
@@ -104,7 +125,7 @@ $pageTitle = "Register";
                                 <button class="btn btn-lg btn-success" type="submit" name="signup">Sign Up</button>
                             </div>
                             <div class="text-center">
-                                <p class="text-muted mt-3 mb-0">Already have an account? <a href="sign-in-basic.php"
+                                <p class="text-muted mt-3 mb-0">Already have an account? <a href="login.php"
                                         class="text-primary">Sign In</a></p>
                             </div>
                         </form>

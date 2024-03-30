@@ -1,5 +1,22 @@
 <?php
 $pageTitle = "Home";
+// Start the session
+session_start();
+
+if (!isset($_SESSION['info'])) {
+    // Redirect to login page
+    header("Location: auth/login.php");
+    exit();
+}
+
+// Display errors if any
+if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
+    $errors = $_SESSION['errors'];
+    unset($_SESSION['errors']); // Clear errors after displaying
+    // Display errors here as needed
+}
+
+// Normal page content below...
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light"
@@ -7,7 +24,21 @@ $pageTitle = "Home";
 
 <head>
     <?php include 'components/externalcss.php'; ?>
+    <title>
+        <?php echo $pageTitle; ?>
+    </title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/brand-logos/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Style Css -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+
+    <!-- Icons Css -->
+    <link href="assets/css/icons.css" rel="stylesheet">
 
     <!-- Choices JS -->
     <script src="assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
