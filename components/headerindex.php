@@ -10,10 +10,10 @@
             <div class="header-element">
                 <div class="horizontal-logo">
                     <a href="index.php" class="header-logo">
-                        <img src="../assets/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo">
-                        <img src="../assets/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo">
-                        <img src="../assets/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark">
-                        <img src="../assets/images/brand-logos/toggle-dark.png" alt="logo" class="toggle-dark">
+                        <img src="assets/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo">
+                        <img src="assets/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo">
+                        <img src="assets/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark">
+                        <img src="assets/images/brand-logos/toggle-dark.png" alt="logo" class="toggle-dark">
                     </a>
                 </div>
             </div>
@@ -102,14 +102,14 @@
                 <!-- Start::header-link|dropdown-toggle -->
                 <a href="javascript:void(0);" class="header-link dropdown-toggle" data-bs-auto-close="outside"
                     data-bs-toggle="dropdown">
-                    <img src="../assets/images/flags/us_flag.jpg" alt="img" class="rounded-circle">
+                    <img src="assets/images/flags/us_flag.jpg" alt="img" class="rounded-circle">
                 </a>
                 <!-- End::header-link|dropdown-toggle -->
                 <ul class="main-header-dropdown dropdown-menu dropdown-menu-end" data-popper-placement="none">
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
                             <span class="avatar avatar-xs lh-1 me-2">
-                                <img src="../assets/images/flags/us_flag.jpg" alt="img">
+                                <img src="assets/images/flags/us_flag.jpg" alt="img">
                             </span>
                             English
                         </a>
@@ -117,7 +117,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
                             <span class="avatar avatar-xs lh-1 me-2">
-                                <img src="../assets/images/flags/spain_flag.jpg" alt="img">
+                                <img src="assets/images/flags/spain_flag.jpg" alt="img">
                             </span>
                             Spanish
                         </a>
@@ -125,7 +125,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
                             <span class="avatar avatar-xs lh-1 me-2">
-                                <img src="../assets/images/flags/french_flag.jpg" alt="img">
+                                <img src="assets/images/flags/french_flag.jpg" alt="img">
                             </span>
                             French
                         </a>
@@ -133,7 +133,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
                             <span class="avatar avatar-xs lh-1 me-2">
-                                <img src="../assets/images/flags/germany_flag.jpg" alt="img">
+                                <img src="assets/images/flags/germany_flag.jpg" alt="img">
                             </span>
                             German
                         </a>
@@ -141,7 +141,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
                             <span class="avatar avatar-xs lh-1 me-2">
-                                <img src="../assets/images/flags/italy_flag.jpg" alt="img">
+                                <img src="assets/images/flags/italy_flag.jpg" alt="img">
                             </span>
                             Italian
                         </a>
@@ -149,7 +149,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
                             <span class="avatar avatar-xs lh-1 me-2">
-                                <img src="../assets/images/flags/russia_flag.jpg" alt="img">
+                                <img src="assets/images/flags/russia_flag.jpg" alt="img">
                             </span>
                             Russian
                         </a>
@@ -201,7 +201,7 @@
                     <ul class="list-unstyled mb-0" id="header-cart-items-scroll">
                         <li class="dropdown-item">
                             <div class="d-flex align-items-start cart-dropdown-item">
-                                <img src="../assets/images/ecommerce/jpg/9.jpg" alt="img" class="avatar me-3">
+                                <img src="assets/images/ecommerce/jpg/9.jpg" alt="img" class="avatar me-3">
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-start justify-content-between mb-0">
                                         <div class="mb-0 fs-13 text-dark">
@@ -226,7 +226,7 @@
                         </li>
                         <li class="dropdown-item">
                             <div class="d-flex align-items-start cart-dropdown-item">
-                                <img src="../assets/images/ecommerce/jpg/10.jpg" alt="img" class="avatar me-3">
+                                <img src="assets/images/ecommerce/jpg/10.jpg" alt="img" class="avatar me-3">
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-start justify-content-between mb-0">
                                         <div class="mb-0 fs-13 text-dark">
@@ -251,7 +251,7 @@
                         </li>
                         <li class="dropdown-item">
                             <div class="d-flex align-items-start cart-dropdown-item">
-                                <img src="../assets/images/ecommerce/jpg/13.jpg" alt="img" class="avatar me-3">
+                                <img src="assets/images/ecommerce/jpg/13.jpg" alt="img" class="avatar me-3">
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-start justify-content-between mb-0">
                                         <div class="mb-0 fs-13 text-dark">
@@ -276,7 +276,7 @@
                         </li>
                         <li class="dropdown-item">
                             <div class="d-flex align-items-start cart-dropdown-item">
-                                <img src="../assets/images/ecommerce/jpg/16.jpg" alt="img" class="avatar me-3">
+                                <img src="assets/images/ecommerce/jpg/16.jpg" alt="img" class="avatar me-3">
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-start justify-content-between mb-0">
                                         <div class="mb-0 fs-13 text-dark">
@@ -301,7 +301,7 @@
                         </li>
                         <li class="dropdown-item">
                             <div class="d-flex align-items-start cart-dropdown-item">
-                                <img src="../assets/images/ecommerce/jpg/18.jpg" alt="img" class="avatar me-3">
+                                <img src="assets/images/ecommerce/jpg/18.jpg" alt="img" class="avatar me-3">
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-start justify-content-between mb-0">
                                         <div class="mb-0 fs-13 text-dark">
@@ -370,7 +370,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="pe-2 lh-1">
                                     <span class="avatar avatar-rounded">
-                                        <img src="../assets/images/faces/11.jpg" alt="">
+                                        <img src="assets/images/faces/11.jpg" alt="">
                                     </span>
                                 </div>
                                 <div class="flex-grow-1 d-flex align-items-center justify-content-between">
@@ -391,7 +391,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="pe-2 lh-1">
                                     <span class="avatar bg-secondary-transparent avatar-rounded">
-                                        <img src="../assets/images/faces/21.jpg" alt="">
+                                        <img src="assets/images/faces/21.jpg" alt="">
                                     </span>
                                 </div>
                                 <div class="flex-grow-1 d-flex align-items-center justify-content-between">
@@ -413,7 +413,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="pe-2 lh-1">
                                     <span class="avatar bg-pink-transparent avatar-rounded">
-                                        <img src="../assets/images/faces/20.jpg" alt="">
+                                        <img src="assets/images/faces/20.jpg" alt="">
                                     </span>
                                 </div>
                                 <div class="flex-grow-1 d-flex align-items-center justify-content-between">
@@ -456,7 +456,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="pe-2 lh-1">
                                     <span class="avatar bg-success-transparent avatar-rounded">
-                                        <img src="../assets/images/faces/6.jpg" alt="">
+                                        <img src="assets/images/faces/6.jpg" alt="">
                                     </span>
                                 </div>
                                 <div class="flex-grow-1 d-flex align-items-center justify-content-between">
@@ -511,7 +511,7 @@
                     data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                     <div class="d-flex align-items-center">
                         <div class="me-sm-2 me-0">
-                            <img src="../assets/images/faces/9.jpg" alt="img" class="avatar avatar-sm avatar-rounded">
+                            <img src="assets/images/faces/9.jpg" alt="img" class="avatar avatar-sm avatar-rounded">
                         </div>
                         <div class="d-xl-block d-none lh-1">
                             <span class="fw-medium lh-1">Admin</span>
