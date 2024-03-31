@@ -67,21 +67,6 @@ if (!isset($_SESSION['info'])) {
                                     <button class="btn btn-sm btn-primary btn-wave waves-light" data-bs-toggle="modal"
                                         data-bs-target="#create-task"><i
                                             class="ri-add-line fw-medium align-middle me-1"></i> Create Task</button>
-                                    <div class="dropdown ms-2">
-                                        <button class="btn btn-icon btn-secondary-light btn-sm btn-wave waves-light"
-                                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="javascript:void(0);">New Tasks</a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">Pending Tasks</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">Completed Tasks</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">Inprogress Tasks</a>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                             <div class="card-body p-0">
@@ -96,6 +81,10 @@ if (!isset($_SESSION['info'])) {
                                             </tr>
                                         </thead>
                                         <tbody id="taskListContainer">
+                                            <?php
+                                            $_GET['status'] = 0; // Set the status parameter
+                                            include "todo/tasks_list.php"; // Include the file
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -103,23 +92,22 @@ if (!isset($_SESSION['info'])) {
                             <div class="card-footer border-top-0">
                                 <nav aria-label="Page navigation" class="pagination-style-1">
                                     <ul class="pagination mb-0 float-end">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="javascript:void(0);">
+                                        <li class="page-item <?php echo $page <= 1 ? 'disabled' : ''; ?>">
+                                            <a class="page-link" href="?status=0&page=<?php echo $page - 1; ?>">
                                                 <i class="ri-arrow-left-s-line align-middle"></i>
                                             </a>
                                         </li>
-                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-                                        <li class="page-item active"><a class="page-link"
-                                                href="javascript:void(0);">2</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript:void(0);">
-                                                <i class="bi bi-three-dots"></i>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">21</a>
+                                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                            <li class="page-item <?php echo $i == $page ? 'active' : ''; ?>">
+                                                <a class="page-link" href="?status=0&page=<?php echo $i ?>">
+                                                    <?php echo $i; ?>
+                                                </a>
+                                            </li>
+                                        <?php endfor; ?>
                                         </li>
                                         <li class="page-item">
-                                            <a class="page-link" href="javascript:void(0);">
+                                            <a class="page-link <?php echo $page >= $totalPages ? 'disabled' : ''; ?>"
+                                                href="?status=0&page=<?php echo $page + 1; ?>">
                                                 <i class="ri-arrow-right-s-line align-middle"></i>
                                             </a>
                                         </li>
@@ -129,13 +117,17 @@ if (!isset($_SESSION['info'])) {
                         </div>
                     </div>
                     <div class="col-xxl-4 col-xl-6">
-                        <div class="card custom-card">
+                        <div class="card custom-card overflow-auto" style="max-height: 800px">
                             <div class="card-header">
                                 <div class="card-title">
                                     Completed
                                 </div>
                             </div>
                             <div class="card-body" id="taskDoneListContainer">
+                                <?php
+                                $_GET['status'] = 1; // Set the status parameter
+                                include "todo/tasks_list.php"; // Include the file
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -298,7 +290,69 @@ if (!isset($_SESSION['info'])) {
     <script src="../assets/js/custom.js"></script>
 
     <script>
+        function setupPaginationListeners() {
+            var paginationLinks = document.querySelectorAll('.pagination .page-link');
+            paginationLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent the default behavior of anchor tags
+
+                    // Get the page number from the link's href attribute
+                    var page = this.getAttribute('href').split('=')[2];
+
+                    // Fetch tasks for the selected page using AJAX
+                    displayTasks(0, page);
+
+                    // Update the active class for pagination links
+                    var activeLink = document.querySelector('.pagination .page-item.active');
+                    if (activeLink) {
+                        activeLink.classList.remove('active');
+                    }
+                    this.parentElement.classList.add('active');
+                });
+            });
+        }
+
+        function setupToggleSwitchListeners() {
+            var toggleSwitches = document.querySelectorAll('[task-toggle]');
+            toggleSwitches.forEach(function (toggleSwitch) {
+                toggleSwitch.addEventListener('click', function () {
+                    var taskId = this.dataset.taskId;
+                    var status = this.getAttribute('task-toggle') === 'on' ? 1 : 0;
+                    updateTaskStatus(taskId, status);
+
+                    // After updating task status, display tasks for the current page again
+                    var currentPage = getCurrentPage(); // Assuming you have a function to get the current page number
+                    displayTasks(status, currentPage);
+                });
+            });
+        }
+
+        function getCurrentPage() {
+            // Get the URL parameters
+            var urlParams = new URLSearchParams(window.location.search);
+
+            // Get the value of the 'page' parameter from the URL
+            var page = urlParams.get('page');
+
+            // Parse the page number as an integer, or return 1 if it's not available or not a valid number
+            return parseInt(page) || 1;
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
+
+            // Initial setup of event listeners
+            setupEventListeners();
+
+            setupPaginationListeners();
+            displayTasks(0, getCurrentPage()); // Display tasks with status 0
+            displayTasks(1, getCurrentPage()); // Display tasks with status 1
+        });
+
+        function setupEventListeners() {
+            // Set up toggle switch event listeners
+            setupToggleSwitchListeners();
+
+            // Set up delete task event listeners
             var deleteButtons = document.querySelectorAll('.delete-task');
             deleteButtons.forEach(function (button) {
                 button.addEventListener("click", function () {
@@ -307,6 +361,7 @@ if (!isset($_SESSION['info'])) {
                 });
             });
 
+            // Set up edit task event listeners
             var editButtons = document.querySelectorAll('.edit-task');
             editButtons.forEach(function (button) {
                 button.addEventListener("click", function () {
@@ -315,39 +370,7 @@ if (!isset($_SESSION['info'])) {
                     populateEditEventModal(taskId, taskName);
                 });
             });
-
-            var toggleSwitches = document.querySelectorAll('[task-toggle]');
-            toggleSwitches.forEach(function (toggleSwitch) {
-                toggleSwitch.addEventListener('click', function () {
-                    var taskId = this.dataset.taskId;
-                    var status = this.getAttribute('task-toggle') === 'on' ? 1 : 0;
-                    updateTaskStatus(taskId, status);
-                });
-            });
-
-
-            function displayTasks(status) {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            // Update the task list container with the fetched tasks
-                            var taskListContainer = (status === 0) ? 'taskListContainer' : 'taskDoneListContainer';
-                            document.getElementById(taskListContainer).innerHTML = xhr.responseText;
-                        } else {
-                            // Error handling
-                            console.error('Error fetching tasks. Status: ' + xhr.status);
-                        }
-                    }
-                };
-                xhr.open('GET', 'todo/tasks_list.php?status=' + status);
-                xhr.send();
-            }
-    
-            // Initial display of tasks with status 0 and 1
-            displayTasks(0);
-            displayTasks(1);
-        });
+        }
 
         function populateEditEventModal(taskId, taskName) {
             document.getElementById('edit-task-id').value = taskId;
@@ -361,8 +384,8 @@ if (!isset($_SESSION['info'])) {
                     if (xhr.status === 200) {
                         // Update was successful
                         console.log(xhr.responseText);
-                        // Re-display tasks with updated status
-                        displayTasks(status);
+                        displayTasks(0, getCurrentPage()); // Display tasks with status 0
+                        displayTasks(1, getCurrentPage()); // Display tasks with status 1
                     } else {
                         // Update failed
                         console.error('Error updating task status.');
@@ -373,7 +396,52 @@ if (!isset($_SESSION['info'])) {
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send('task_id=' + taskId);
         }
+
+        function displayTasks(status, page) {
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Update the task list container with the fetched tasks
+                        var taskListContainer = (status === 0) ? 'taskListContainer' : 'taskDoneListContainer';
+                        var container = document.getElementById(taskListContainer);
+                        if (container) {
+                            container.innerHTML = xhr.responseText;
+                            // Set up event listeners after updating tasks
+                            setupEventListeners();
+                        } else {
+                            console.error('Task list container not found:', taskListContainer);
+                        }
+                    } else {
+                        // Error handling
+                        console.error('Error fetching tasks. Status: ' + xhr.status);
+                    }
+                }
+            };
+            xhr.open('GET', 'todo/tasks_list.php?status=' + status + '&page=' + page);
+            xhr.send();
+        }
+
+        function handlePaginationClick(event) {
+            event.preventDefault(); // Prevent the default behavior of anchor tags
+
+            // Get the URL from the anchor tag's href attribute
+            var url = event.target.href;
+
+            // Extract the page number from the URL
+            var params = new URLSearchParams(url);
+            var page = params.get('page') || 1;
+
+            // Fetch tasks for the selected page using AJAX
+            displayTasks(0, page);
+
+            return false;
+        }
+
+
     </script>
+
 
 
 </body>
