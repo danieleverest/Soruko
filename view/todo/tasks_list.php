@@ -23,21 +23,46 @@ mysqli_set_charset($conn, "utf8");
 // Include your database connection code here
 
 if (isset($_GET['status'])) {
-    $status = mysqli_real_escape_string($conn, $_GET['status']);
 
-    // Fetch tasks data from the database based on the provided status
-    $sql = "SELECT * FROM tasks WHERE status = '$status'";
+    $status = mysqli_real_escape_string($conn, $_GET['status']);
+    
+    // Pagination variables
+    $recordsPerPage = 10; // Number of records per page
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+
+    // Calculate the starting record for the current page
+    $start = ($page - 1) * $recordsPerPage;
+
+    // Fetch tasks data from the database based on the provided status and pagination
+    if ($status == 0) {
+        $sql = "SELECT * FROM tasks WHERE status = '$status' LIMIT $start, $recordsPerPage";
+    } else {
+        $sql = "SELECT * FROM tasks WHERE status = '$status'";
+    }
+
     $result = mysqli_query($conn, $sql);
+
+    // Fetch total number of records for pagination
+    $totalRecordsQuery = "SELECT COUNT(*) AS total FROM tasks WHERE status = 0";
+    $totalRecordsResult = mysqli_query($conn, $totalRecordsQuery);
+    $totalRecordsRow = mysqli_fetch_assoc($totalRecordsResult);
+    $totalRecords = $totalRecordsRow['total'];
+
+    // Calculate total number of pages
+    $totalPages = ceil($totalRecords / $recordsPerPage);
     // Check if there are any tasks
     if (mysqli_num_rows($result) > 0) {
         // Loop through each row of the result set
         while ($row = mysqli_fetch_assoc($result)) {
             if ($row['status'] == 0) {
+                // Define variables for pagination
                 ?>
                 <tr class="task-list" id="task_<?php echo $row['id']; ?>">
                     <td>
                         <span class="fw-medium">
                             <div class="fs-15 fw-medium">
+                                <?php echo $page ?>
                                 <?php echo $row['task_name']; ?>
                             </div>
                             <?php
@@ -122,6 +147,7 @@ if (isset($_GET['status'])) {
                 </div>
                 <?php
             }
+
         }
     } else {
         // No tasks found
