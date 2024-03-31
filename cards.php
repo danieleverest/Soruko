@@ -2885,7 +2885,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                         <div class="col-xl-3">
                             <div class="card custom-card card-bg-dark">

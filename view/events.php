@@ -62,37 +62,29 @@ if (!isset($_SESSION['info'])) {
                 <!-- Start::row-1 -->
                 <div class="row">
                     <div class="col-xl-7">
-                        <div class="card custom-card">
-                            <div class="card-header">
-                                <div class="card-title">Events:</div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table text-nowrap table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Color</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php include 'display_events.php'; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-5">
-                        <div class="card custom-card">
+                        <div class="card custom-card overflow-hidden">
                             <div class="card-header justify-content-between">
-                                <div class="card-title">All Events</div>
+                                <div class="card-title">Events</div>
                                 <a aria-label="anchor" href="javascript:void(0)"
                                     class="btn btn-sm btn-info bg-white text-default border btn-wave"
                                     data-bs-toggle="modal" data-bs-target="#add-event">
                                     <i class="ri-add-line align-middle me-1 fw-medium"></i>Create New Event
                                 </a>
+                            </div>
+                            <div class="card-body p-0">
+                                <ul class="list-group list-group-flush">
+                                    <?php include 'display_events.php'; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="card custom-card">
+
+                            <div class="card-header">
+                                <div class="card-title">
+                                    All Events:
+                                </div>
                             </div>
                             <div class="card-body p-0">
                                 <div id="external-events"
