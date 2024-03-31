@@ -55,19 +55,10 @@
                         </li>
                     </ul>
                 </li>
-                <li class="slide has-sub">
-                    <a href="javascript:void(0);" class="side-menu__item">
+                <li class="slide">
+                    <a href="todo.php" class="side-menu__item">
                         <i class="bi bi-layers side-menu__icon"></i>
-                        <span class="side-menu__label">Todo</span>
-                        <i class="fe fe-chevron-right side-menu__angle"></i></a>
-                    <ul class="slide-menu child2">
-                        <li class="slide">
-                            <a href="task-list-view.php" class="side-menu__item">List View</a>
-                        </li>
-                        <li class="slide">
-                            <a href="task-details.php" class="side-menu__item">Task Details</a>
-                        </li>
-                    </ul>
+                        <span class="side-menu__label">Todo</span></a>
                 </li>
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
