@@ -57,8 +57,8 @@
                 </li>
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="bi bi-file-earmark-text side-menu__icon"></i>
-                        <span class="side-menu__label">Task</span>
+                        <i class="bi bi-layers side-menu__icon"></i>
+                        <span class="side-menu__label">Todo</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i></a>
                     <ul class="slide-menu child2">
                         <li class="slide">
@@ -85,7 +85,9 @@
                         <span class="side-menu__label">Links</span></a>
                 </li>
                 <li class="slide has-sub">
-                    <a href="javascript:void(0);" class="side-menu__item">Projects
+                    <a href="javascript:void(0);" class="side-menu__item">
+                        <i class="bi bi-file-earmark-text side-menu__icon"></i>
+                        <span class="side-menu__label">Projects</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i></a>
                     <ul class="slide-menu child2">
                         <li class="slide">

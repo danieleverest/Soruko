@@ -53,27 +53,11 @@ if (!isset($_SESSION['info'])) {
             <div class="container-fluid">
 
                 <!-- Page Header -->
-                <div
-                    class="my-4 page-header-breadcrumb d-flex align-items-center justify-content-between flex-wrap gap-2">
-                    <div>
-                        <h1 class="page-title fw-medium fs-18 mb-2">Kanban Board</h1>
-                        <div class="">
-                            <nav>
-                                <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Task</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Kanban Board</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="btn-list">
-                        <button class="btn btn-primary-light btn-wave me-2">
-                            <i class="bx bx-crown align-middle"></i> Plan Upgrade
-                        </button>
-                        <button class="btn btn-secondary-light btn-wave me-0">
-                            <i class="ri-upload-cloud-line align-middle"></i> Export Report
-                        </button>
-                    </div>
+                <div class="my-4 page-header-breadcrumb d-flex justify-content-between flex-wrap gap-2">
+                    <h1 class="page-title fw-medium fs-18 mb-2">Sticky Notes</h1>
+                    <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#add-board"><i
+                            class="ri-add-line me-1 fw-medium align-middle"></i>New
+                        Board</button>
                 </div>
                 <!-- Page Header Close -->
 
@@ -85,20 +69,7 @@ if (!isset($_SESSION['info'])) {
                                 <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                                     <div class="row kanban-board">
                                         <div class="col-xl-5">
-                                            <button class="btn btn-primary me-2" data-bs-toggle="modal"
-                                                data-bs-target="#add-board"><i
-                                                    class="ri-add-line me-1 fw-medium align-middle"></i>New
-                                                Board</button>
-                                        </div>
-                                        <div class="col-xl-7 mt-2 my-xxl-0">
-                                            <select class="form-control kanban-sortby" data-trigger
-                                                name="choices-single-default" id="choices-single-default">
-                                                <option value="">Sort By</option>
-                                                <option value="Newest">Newest</option>
-                                                <option value="Date Added">Date Added</option>
-                                                <option value="Type">Type</option>
-                                                <option value="A - Z">A - Z</option>
-                                            </select>
+
                                         </div>
                                     </div>
                                     <div class="avatar-list-stacked">

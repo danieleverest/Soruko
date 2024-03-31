@@ -22,6 +22,12 @@ if (!isset($_SESSION['info'])) {
 
     <!-- Prism CSS -->
     <link rel="stylesheet" href="../assets/libs/prismjs/themes/prism-coy.min.css">
+    <link rel="stylesheet" href="../assets/libs/filepond/filepond.min.css">
+
+    <link rel="stylesheet" href="../assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
+    <link rel="stylesheet" href="../assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.css">
+    <link rel="stylesheet" href="../assets/libs/dropzone/dropzone.css">
+
 </head>
 
 <body>
@@ -76,9 +82,124 @@ if (!isset($_SESSION['info'])) {
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <button class="btn btn-icon btn-secondary-light ms-2"
-                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-title="Add Links"><i class="ri-add-line"></i></button>
+                                            <button class="btn btn-icon btn-secondary-light ms-2" data-bs-toggle="modal"
+                                                data-bs-target="#add_link" data-bs-title="Add Links"><i
+                                                    class="ri-add-line"></i></button>
+                                            <!-- Start::add link modal -->
+                                            <div class="modal fade" id="add_link" tabindex="-1" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <form id="add-link-form"
+                                                            action="../Controller/LinksController.php" method="post">
+
+                                                            <div class="modal-header">
+                                                                <h6 class="modal-title">Add Link</h6>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body px-4">
+                                                                <div class="row gy-2">
+                                                                    <div class="col-xl-6">
+                                                                        <div class="col-xl-12">
+                                                                            <label for="link-name"
+                                                                                class="form-label">Link
+                                                                                Name</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="link-name" placeholder="Link Name"
+                                                                                required name="link_name">
+                                                                        </div>
+                                                                        <div class="col-xl-12">
+                                                                            <label for="link-url"
+                                                                                class="form-label">Link
+                                                                                URL</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="link-url" placeholder="Link URL"
+                                                                                required name="link_url">
+                                                                        </div>
+                                                                        <br>
+                                                                        <div class="col-xl-12">
+                                                                            <label class="form-label">Category</label>
+                                                                            <select class="form-select"
+                                                                                aria-label="Default select example"
+                                                                                required name="category_id">
+                                                                                <option selected>Select Category
+                                                                                </option>
+                                                                                <?php
+                                                                                // Include your database connection code here
+                                                                                include_once "../config/db.php";
+
+                                                                                // Fetch categories data from the database
+                                                                                $sql = "SELECT * FROM linkcategories";
+                                                                                $result = mysqli_query($conn, $sql);
+
+                                                                                // Check if there are any categories
+                                                                                if (mysqli_num_rows($result) > 0) {
+                                                                                    // Loop through each row of the result set
+                                                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                                                        ?>
+                                                                                        <option
+                                                                                            value="<?php echo $row['id']; ?>">
+                                                                                            <?php echo $row['linkcategory']; ?>
+                                                                                        </option>
+                                                                                        <?php
+                                                                                    }
+                                                                                } else {
+                                                                                    // No categories found
+                                                                                    ?>
+                                                                                    <option disabled>No categories found
+                                                                                    </option>
+                                                                                    <?php
+                                                                                }
+                                                                                ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xl-6">
+                                                                        <div class="card custom-card">
+                                                                            <div class="card-header">
+                                                                                <div class="card-title">
+                                                                                    Image Upload
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="card-body">
+                                                                                <input type="file"
+                                                                                    class="single-fileupload"
+                                                                                    name="image" id="image" value=""
+                                                                                    accept="image/*" required>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-light"
+                                                                    data-bs-dismiss="modal">Cancel</button>
+                                                                <button type="submit" class="btn btn-primary"
+                                                                    name="add-link">Add
+                                                                    Link</button>
+                                                            </div>
+                                                        </form>
+                                                        <!-- Start:: row-2 -->
+                                                        <div class="row d-none">
+                                                            <div class="col-xl-12">
+                                                                <div class="card custom-card">
+                                                                    <div class="card-header">
+                                                                        <div class="card-title">
+                                                                            Dropzone
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <form data-single="true" method="post"
+                                                                            action="https://httpbin.org/post"
+                                                                            class="dropzone"></form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End:: row-2 -->
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1446,36 +1567,21 @@ if (!isset($_SESSION['info'])) {
 
                     </div>
                     <div class="col-xl-3">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                                <div class="p-3">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <h6 class="fw-medium">
-                                            Category :
-                                        </h6>
-                                        <!-- <button class="btn btn-primary-light btn-sm btn-wave">View All</button> -->
-                                        <a aria-label="anchor" href="javascript:void(0)"
-                                            class="btn btn-sm btn-info bg-white text-default border btn-wave"
-                                            data-bs-toggle="modal" data-bs-target="#add-linkcategory">
-                                            <i class="ri-add-line align-middle me-1 fw-medium"></i>Add New Category
-                                        </a>
-                                    </div>
+                        <div class="card custom-card overflow-hidden">
+                            <div class="d-flex card-header align-items-center justify-content-between">
+                                <div class="card-title">
+                                    Category:
                                 </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table text-nowrap table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Category</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php include 'display_links.php'; ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                <a aria-label="anchor" href="javascript:void(0)"
+                                    class="btn btn-sm btn-info bg-white text-default border btn-wave"
+                                    data-bs-toggle="modal" data-bs-target="#add-linkcategory">
+                                    <i class="ri-add-line align-middle me-1 fw-medium"></i>Add New Category
+                                </a>
+                            </div>
+                            <div class="card-body p-0">
+                                <ul class="list-group list-group-flush">
+                                    <?php include 'display_links.php'; ?>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -1559,7 +1665,8 @@ if (!isset($_SESSION['info'])) {
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-danger" name="delete-linkcategory">Delete</button>
+                                    <button type="submit" class="btn btn-danger"
+                                        name="delete-linkcategory">Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -1635,11 +1742,6 @@ if (!isset($_SESSION['info'])) {
     <!-- Color Picker JS -->
     <script src="../assets/libs/@simonwep/pickr/pickr.es5.min.js"></script>
 
-
-    <!-- Custom JS -->
-    <script src="../assets/js/custom.js"></script>
-
-
     <!-- Custom-Switcher JS -->
     <script src="../assets/js/custom-switcher.min.js"></script>
 
@@ -1654,6 +1756,27 @@ if (!isset($_SESSION['info'])) {
     <script src="../assets/libs/prismjs/prism.js"></script>
     <script src="../assets/js/prism-custom.js"></script>
 
+    <!-- Filepond JS -->
+    <script src="../assets/libs/filepond/filepond.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
+    <script
+        src="../assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-image-crop/filepond-plugin-image-crop.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-image-transform/filepond-plugin-image-transform.min.js"></script>
+
+    <!-- Dropzone JS -->
+    <script src="../assets/libs/dropzone/dropzone-min.js"></script>
+    <!-- Fileupload JS -->
+    <script src="../assets/js/fileupload.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/custom.js"></script>
     <!-- Toast JS -->
     <!-- <script src="../assets/js/Toasts.js"></script> -->
 
