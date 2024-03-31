@@ -25,13 +25,13 @@
 
                 <!-- Start::slide -->
                 <li class="slide">
-                    <a href="javascript:void(0);" class="side-menu__item">
+                    <a href="index.php" class="side-menu__item">
                         <i class="bi bi-house side-menu__icon"></i>
                         <span class="side-menu__label">Home</span>
                     </a>
                 </li>
                 <li class="slide">
-                    <a href="task-kanban-board.php" class="side-menu__item">
+                    <a href="view/notes.php" class="side-menu__item">
                         <i class="bi bi-sticky side-menu__icon"></i>
                         <span class="side-menu__label">Notes</span>
                     </a>

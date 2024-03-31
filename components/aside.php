@@ -25,24 +25,24 @@
 
                 <!-- Start::slide -->
                 <li class="slide">
-                    <a href="javascript:void(0);" class="side-menu__item">
+                    <a href="../index.php" class="side-menu__item">
                         <i class="bi bi-house side-menu__icon"></i>
                         <span class="side-menu__label">Home</span>
                     </a>
                 </li>
                 <li class="slide">
-                    <a href="task-kanban-board.php" class="side-menu__item">
+                    <a href="notes.php" class="side-menu__item">
                         <i class="bi bi-sticky side-menu__icon"></i>
                         <span class="side-menu__label">Notes</span>
                     </a>
                 </li>
-                <li class="slide">
-                    <a href="calendar.php" class="side-menu__item">
+                <li class="slide has-sub">
+                    <!-- <a href="calendar.php" class="side-menu__item">
                         <i class="bi bi-calendar side-menu__icon"></i>
                         <span class="side-menu__label">Calendar</span>
-                    </a>
+                    </a> -->
 
-                    <!-- <a href="javascript:void(0);" class="side-menu__item">
+                    <a href="javascript:void(0);" class="side-menu__item">
                         <i class="bi bi-calendar side-menu__icon"></i>
                         <span class="side-menu__label">Calendar</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i></a>
@@ -52,21 +52,6 @@
                         </li>
                         <li class="slide">
                             <a href="events.php" class="side-menu__item">Events</a>
-                        </li>
-                    </ul> -->
-                </li>
-                <li class="slide has-sub">
-                    <a href="javascript:void(0);" class="side-menu__item">Projects
-                        <i class="fe fe-chevron-right side-menu__angle"></i></a>
-                    <ul class="slide-menu child2">
-                        <li class="slide">
-                            <a href="projects-list.php" class="side-menu__item">Projects List</a>
-                        </li>
-                        <li class="slide">
-                            <a href="projects-overview.php" class="side-menu__item">Project Overview</a>
-                        </li>
-                        <li class="slide">
-                            <a href="projects-create.php" class="side-menu__item">Create Project</a>
                         </li>
                     </ul>
                 </li>
@@ -96,8 +81,23 @@
                     </ul>
                 </li>
                 <li class="slide">
-                    <a href="contacts.php" class="side-menu__item"><i class="bi bi-link side-menu__icon"></i>
+                    <a href="links.php" class="side-menu__item"><i class="bi bi-link side-menu__icon"></i>
                         <span class="side-menu__label">Links</span></a>
+                </li>
+                <li class="slide has-sub">
+                    <a href="javascript:void(0);" class="side-menu__item">Projects
+                        <i class="fe fe-chevron-right side-menu__angle"></i></a>
+                    <ul class="slide-menu child2">
+                        <li class="slide">
+                            <a href="projects-list.php" class="side-menu__item">Projects List</a>
+                        </li>
+                        <li class="slide">
+                            <a href="projects-overview.php" class="side-menu__item">Project Overview</a>
+                        </li>
+                        <li class="slide">
+                            <a href="projects-create.php" class="side-menu__item">Create Project</a>
+                        </li>
+                    </ul>
                 </li>
                 <!-- <li class="slide">
                     <a href="gallery.php" class="side-menu__item">
