@@ -46,7 +46,7 @@ if (!isset($_SESSION['info'])) {
                 <div
                     class="my-4 page-header-breadcrumb d-flex align-items-center justify-content-between flex-wrap gap-2">
                     <div>
-                        <h1 class="page-title fw-medium fs-18 mb-2">Calendar</h1>
+                        <h1 class="page-title fw-medium fs-18 mb-2">Events</h1>
                     </div>
                     <!-- <div>
                         <button class="btn btn-primary-light btn-wave me-2 waves-effect waves-light">
@@ -61,7 +61,30 @@ if (!isset($_SESSION['info'])) {
 
                 <!-- Start::row-1 -->
                 <div class="row">
-                    <div class="col-xl-9">
+                    <div class="col-xl-7">
+                        <div class="card custom-card">
+                            <div class="card-header">
+                                <div class="card-title">Events:</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table text-nowrap table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Color</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php include 'display_events.php'; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5">
                         <div class="card custom-card">
                             <div class="card-header justify-content-between">
                                 <div class="card-title">All Events</div>
@@ -75,95 +98,6 @@ if (!isset($_SESSION['info'])) {
                                 <div id="external-events"
                                     class="border-bottom p-3 d-flex align-items-center justify-content-between flex-wrap">
                                     <?php include 'events_list.php'; ?>
-                                    <!-- <div
-                                        class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-primary-transparent">
-                                        <div class="fc-event-main text-primary">Calendar Events</div>
-                                    </div> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card custom-card">
-                            <div class="card-header">
-                                <div class="card-title">Full Calendar</div>
-                            </div>
-                            <div class="card-body">
-                                <div id='calendar2'></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                                <div class="p-3">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <h6 class="fw-medium">
-                                            Activity :
-                                        </h6>
-                                        <!-- <button class="btn btn-primary-light btn-sm btn-wave">View All</button> -->
-                                    </div>
-                                </div>
-                                <div class="p-3 border-bottom" id="full-calendar-activity">
-                                    <ul class="list-unstyled mb-0 fullcalendar-events-activity">
-                                        <li>
-                                            <div class="d-flex align-items-center justify-content-between flex-wrap">
-                                                <p class="mb-1 fw-medium">
-                                                    Monday, Jan 1,2023
-                                                </p>
-                                                <span class="badge bg-light text-default mb-1">12:00PM - 1:00PM</span>
-                                            </div>
-                                            <p class="mb-0 text-muted fs-12">
-                                                Meeting with a client about new project requirement.
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex align-items-center justify-content-between flex-wrap">
-                                                <p class="mb-1 fw-medium">
-                                                    Thursday, Dec 29,2022
-                                                </p>
-                                                <span class="badge bg-success mb-1">Completed</span>
-                                            </div>
-                                            <p class="mb-0 text-muted fs-12">
-                                                Birthday party of niha suka
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex align-items-center justify-content-between flex-wrap">
-                                                <p class="mb-1 fw-medium">
-                                                    Wednesday, Jan 3,2023
-                                                </p>
-                                                <span class="badge bg-warning-transparent mb-1">Reminder</span>
-                                            </div>
-                                            <p class="mb-0 text-muted fs-12">
-                                                WOrk taget for new project is completing
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex align-items-center justify-content-between flex-wrap">
-                                                <p class="mb-1 fw-medium">
-                                                    Friday, Jan 20,2023
-                                                </p>
-                                                <span class="badge bg-light text-default mb-1">06:00PM - 09:00PM</span>
-                                            </div>
-                                            <p class="mb-0 text-muted fs-12">
-                                                Watch new movie with family
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex align-items-center justify-content-between flex-wrap">
-                                                <p class="mb-1 fw-medium">
-                                                    Saturday, Jan 07,2023
-                                                </p>
-                                                <span class="badge bg-danger-transparent mb-1">Due Date</span>
-                                            </div>
-                                            <p class="mb-0 text-muted fs-12">
-                                                Last day to pay the electricity bill and water bill.need to check the
-                                                bank details.
-                                            </p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="p-3">
-                                    <img src="../assets/images/media/media-81.svg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -205,6 +139,66 @@ if (!isset($_SESSION['info'])) {
                     </form>
                 </div>
                 <!-- End::add event modal -->
+
+                <!-- Start::edit event modal -->
+                <div class="modal fade" id="edit-event" tabindex="-1" aria-hidden="true">
+                    <form id="edit-event-form" action="../Controller/CalendarController.php" method="post">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title">Edit Event</h6>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body px-4">
+                                    <input type="hidden" name="event_id" id="edit-event-id">
+                                    <div class="row gy-2">
+                                        <div class="col-xl-2">
+                                            <label for="edit-event-color" class="form-label">Color</label>
+                                            <input type="color" class="form-control form-control-color border-0 mt-1"
+                                                id="edit-event-color" name="new_color" title="Choose your color">
+                                        </div>
+                                        <div class="col-xl-10">
+                                            <label for="edit-event-name" class="form-label">Event Name</label>
+                                            <input type="text" class="form-control" id="edit-event-name"
+                                                placeholder="Event Name" name="new_event_name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-primary" name="edit-event">Edit
+                                        Event</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- End::add event modal -->
+
+                <!-- Start::delete event modal -->
+                <div class="modal fade" id="delete-event" tabindex="-1" aria-hidden="true">
+                    <form id="delete-event-form" action="../Controller/CalendarController.php" method="post">
+                        <input type="hidden" name="delete-event-id" id="delete-event-id">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title">Delete Event</h6>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete this event?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-danger" name="delete-event">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- End::delete event modal -->
 
                 <!-- <button type="button" class="btn btn-primary btn-wave" id="liveToastBtn">Show live
                         toast</button> -->

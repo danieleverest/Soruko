@@ -42,6 +42,4 @@ if (mysqli_num_rows($result) > 0) {
     <?php
 }
 
-// Close database connection
-mysqli_close($conn);
 ?>

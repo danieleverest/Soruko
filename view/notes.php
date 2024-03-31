@@ -1,3 +1,17 @@
+<?php
+$pageTitle = "Notes";
+// Start the session
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['info'])) {
+    // Redirect to login page
+    header("Location: auth/login.php");
+    exit();
+}
+
+// Normal page content below...
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light"
     data-menu-styles="light" data-toggled="close">
@@ -5,72 +19,33 @@
 <head>
 
     <!-- Meta Data -->
-    <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> UDON - Bootstrap 5 Premium Admin & Dashboard Template </title>
-    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
-    <meta name="Author" content="Spruko Technologies Private Limited">
-    <meta name="keywords"
-        content="admin dashboard,admin template,admin panel,bootstrap admin dashboard,html template,sales dashboard,dashboard,template dashboard,admin,html and css template,admin dashboard bootstrap,personal dashboard,crypto dashboard,stocks dashboard,admin panel template">
+    <?php include '../components/externalcss.php'; ?>
 
-    <!-- Favicon -->
-    <link rel="icon" href="assets/images/brand-logos/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/libs/filepond/filepond.min.css">
+    <link rel="stylesheet" href="../assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
+    <link rel="stylesheet" href="../assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.css">
 
-    <!-- Choices JS -->
-    <script src="assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
-
-    <!-- Main Theme Js -->
-    <script src="assets/js/main.js"></script>
-
-    <!-- Bootstrap Css -->
-    <link id="style" href="assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Style Css -->
-    <link href="assets/css/styles.css" rel="stylesheet">
-
-    <!-- Icons Css -->
-    <link href="assets/css/icons.css" rel="stylesheet">
-
-    <!-- Node Waves Css -->
-    <link href="assets/libs/node-waves/waves.min.css" rel="stylesheet">
-
-    <!-- Simplebar Css -->
-    <link href="assets/libs/simplebar/simplebar.min.css" rel="stylesheet">
-
-    <!-- Color Picker Css -->
-    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
-    <link rel="stylesheet" href="assets/libs/@simonwep/pickr/themes/nano.min.css">
-
-    <!-- Choices Css -->
-    <link rel="stylesheet" href="assets/libs/choices.js/public/assets/styles/choices.min.css">
-
-
-    <link rel="stylesheet" href="assets/libs/filepond/filepond.min.css">
-    <link rel="stylesheet" href="assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
-    <link rel="stylesheet" href="assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.css">
-
-    <link rel="stylesheet" href="assets/libs/dragula/dragula.min.css">
+    <link rel="stylesheet" href="../assets/libs/dragula/dragula.min.css">
 
 </head>
 
 <body>
 
     <!-- Start Switcher -->
-    <?php include 'components/switcher.php'; ?>
+    <?php include '../components/switcher.php'; ?>
     <!-- End Switcher -->
 
 
     <!-- Loader -->
-    <?php include 'components/loader.php'; ?>
+    <?php include '../components/loader.php'; ?>
     <!-- Loader -->
 
     <div class="page">
         <!-- app-header -->
-        <?php include 'components/header.php'; ?>
+        <?php include '../components/header.php'; ?>
         <!-- /app-header -->
         <!-- Start::app-sidebar -->
-        <?php include 'components/aside.php'; ?>
+        <?php include '../components/aside.php'; ?>
         <!-- End::app-sidebar -->
 
         <!-- Start::app-content -->
@@ -128,22 +103,22 @@
                                     </div>
                                     <div class="avatar-list-stacked">
                                         <span class="avatar avatar-rounded">
-                                            <img src="assets/images/faces/2.jpg" alt="img">
+                                            <img src="../assets/images/faces/2.jpg" alt="img">
                                         </span>
                                         <span class="avatar avatar-rounded">
-                                            <img src="assets/images/faces/8.jpg" alt="img">
+                                            <img src="../assets/images/faces/8.jpg" alt="img">
                                         </span>
                                         <span class="avatar avatar-rounded">
-                                            <img src="assets/images/faces/2.jpg" alt="img">
+                                            <img src="../assets/images/faces/2.jpg" alt="img">
                                         </span>
                                         <span class="avatar avatar-rounded">
-                                            <img src="assets/images/faces/10.jpg" alt="img">
+                                            <img src="../assets/images/faces/10.jpg" alt="img">
                                         </span>
                                         <span class="avatar avatar-rounded">
-                                            <img src="assets/images/faces/4.jpg" alt="img">
+                                            <img src="../assets/images/faces/4.jpg" alt="img">
                                         </span>
                                         <span class="avatar avatar-rounded">
-                                            <img src="assets/images/faces/13.jpg" alt="img">
+                                            <img src="../assets/images/faces/13.jpg" alt="img">
                                         </span>
                                         <a class="avatar bg-primary avatar-rounded text-fixed-white"
                                             href="javascript:void(0);">
@@ -234,16 +209,16 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/11.jpg" alt="img">
+                                                        <img src="../assets/images/faces/11.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/12.jpg" alt="img">
+                                                        <img src="../assets/images/faces/12.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/7.jpg" alt="img">
+                                                        <img src="../assets/images/faces/7.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/8.jpg" alt="img">
+                                                        <img src="../assets/images/faces/8.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -305,10 +280,10 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/13.jpg" alt="img">
+                                                        <img src="../assets/images/faces/13.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/6.jpg" alt="img">
+                                                        <img src="../assets/images/faces/6.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -349,7 +324,7 @@
                                             </div>
                                             <div class="kanban-content mt-2">
                                                 <div class="task-image mt-2">
-                                                    <img src="assets/images/media/media-36.jpg"
+                                                    <img src="../assets/images/media/media-36.jpg"
                                                         class="img-fluid rounded kanban-image" alt="">
                                                 </div>
                                                 <h6 class="fw-medium mb-0 mt-2">Design multi usage landing.</h6>
@@ -371,16 +346,16 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/2.jpg" alt="img">
+                                                        <img src="../assets/images/faces/2.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/8.jpg" alt="img">
+                                                        <img src="../assets/images/faces/8.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/5.jpg" alt="img">
+                                                        <img src="../assets/images/faces/5.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/10.jpg" alt="img">
+                                                        <img src="../assets/images/faces/10.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -464,13 +439,13 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/9.jpg" alt="img">
+                                                        <img src="../assets/images/faces/9.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/8.jpg" alt="img">
+                                                        <img src="../assets/images/faces/8.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/14.jpg" alt="img">
+                                                        <img src="../assets/images/faces/14.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -511,7 +486,7 @@
                                             </div>
                                             <div class="kanban-content mt-2">
                                                 <div class="task-image mt-2">
-                                                    <img src="assets/images/media/media-41.jpg"
+                                                    <img src="../assets/images/media/media-41.jpg"
                                                         class="img-fluid rounded kanban-image" alt="">
                                                 </div>
                                                 <h6 class="fw-medium mb-0 mt-2">New Project Discussion.</h6>
@@ -533,16 +508,16 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/2.jpg" alt="img">
+                                                        <img src="../assets/images/faces/2.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/8.jpg" alt="img">
+                                                        <img src="../assets/images/faces/8.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/5.jpg" alt="img">
+                                                        <img src="../assets/images/faces/5.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/10.jpg" alt="img">
+                                                        <img src="../assets/images/faces/10.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -625,10 +600,10 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/13.jpg" alt="img">
+                                                        <img src="../assets/images/faces/13.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/6.jpg" alt="img">
+                                                        <img src="../assets/images/faces/6.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -689,7 +664,7 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/12.jpg" alt="img">
+                                                        <img src="../assets/images/faces/12.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -751,7 +726,7 @@
                                             </div>
                                             <div class="kanban-content mt-2">
                                                 <div class="task-image mt-2">
-                                                    <img src="assets/images/media/media-43.jpg"
+                                                    <img src="../assets/images/media/media-43.jpg"
                                                         class="img-fluid rounded kanban-image" alt="">
                                                 </div>
                                                 <h6 class="fw-medium mb-0 mt-2">Design Architecture strategy.</h6>
@@ -773,13 +748,13 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/3.jpg" alt="img">
+                                                        <img src="../assets/images/faces/3.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/5.jpg" alt="img">
+                                                        <img src="../assets/images/faces/5.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/7.jpg" alt="img">
+                                                        <img src="../assets/images/faces/7.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -863,10 +838,10 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/6.jpg" alt="img">
+                                                        <img src="../assets/images/faces/6.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/13.jpg" alt="img">
+                                                        <img src="../assets/images/faces/13.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -929,13 +904,13 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/10.jpg" alt="img">
+                                                        <img src="../assets/images/faces/10.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/11.jpg" alt="img">
+                                                        <img src="../assets/images/faces/11.jpg" alt="img">
                                                     </span>
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/1.jpg" alt="img">
+                                                        <img src="../assets/images/faces/1.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -978,7 +953,7 @@
                                             </div>
                                             <div class="kanban-content mt-2">
                                                 <div class="task-image mt-2">
-                                                    <img src="assets/images/media/media-69.jpg"
+                                                    <img src="../assets/images/media/media-69.jpg"
                                                         class="img-fluid rounded kanban-image bg-light" alt="">
                                                 </div>
                                                 <h6 class="fw-medium mb-0 mt-2">Project discussion with client.</h6>
@@ -1000,7 +975,7 @@
                                                 </div>
                                                 <div class="avatar-list-stacked">
                                                     <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="assets/images/faces/4.jpg" alt="img">
+                                                        <img src="../assets/images/faces/4.jpg" alt="img">
                                                     </span>
                                                 </div>
                                             </div>
@@ -1126,7 +1101,7 @@
 
 
         <!-- Footer Start -->
-        <?php include 'components/footer.php'; ?>
+        <?php include '../components/footer.php'; ?>
         <!-- Footer End -->
 
         <div class="modal fade" id="header-responsive-search" tabindex="-1" aria-labelledby="header-responsive-search"
@@ -1149,61 +1124,61 @@
 
 
     <!-- Scroll To Top -->
-    <?php include 'components/scrolltotop.php'; ?>
+    <?php include '../components/scrolltotop.php'; ?>
     <!-- Scroll To Top -->
 
     <!-- Popper JS -->
-    <script src="assets/libs/@popperjs/core/umd/popper.min.js"></script>
+    <script src="../assets/libs/@popperjs/core/umd/popper.min.js"></script>
 
     <!-- Bootstrap JS -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Defaultmenu JS -->
-    <script src="assets/js/defaultmenu.min.js"></script>
+    <script src="../assets/js/defaultmenu.min.js"></script>
 
     <!-- Node Waves JS-->
-    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="../assets/libs/node-waves/waves.min.js"></script>
 
     <!-- Sticky JS -->
-    <script src="assets/js/sticky.js"></script>
+    <script src="../assets/js/sticky.js"></script>
 
     <!-- Simplebar JS -->
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/js/simplebar.js"></script>
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/js/simplebar.js"></script>
 
     <!-- Color Picker JS -->
-    <script src="assets/libs/@simonwep/pickr/pickr.es5.min.js"></script>
+    <script src="../assets/libs/@simonwep/pickr/pickr.es5.min.js"></script>
 
 
 
     <!-- Custom-Switcher JS -->
-    <script src="assets/js/custom-switcher.min.js"></script>
+    <script src="../assets/js/custom-switcher.min.js"></script>
 
     <!-- Filepond JS -->
-    <script src="assets/libs/filepond/filepond.min.js"></script>
-    <script src="assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
+    <script src="../assets/libs/filepond/filepond.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
     <script
-        src="assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js"></script>
-    <script src="assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js"></script>
-    <script src="assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js"></script>
-    <script src="assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.js"></script>
-    <script src="assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js"></script>
-    <script src="assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js"></script>
-    <script src="assets/libs/filepond-plugin-image-crop/filepond-plugin-image-crop.min.js"></script>
-    <script src="assets/libs/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js"></script>
-    <script src="assets/libs/filepond-plugin-image-transform/filepond-plugin-image-transform.min.js"></script>
+        src="../assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-image-crop/filepond-plugin-image-crop.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js"></script>
+    <script src="../assets/libs/filepond-plugin-image-transform/filepond-plugin-image-transform.min.js"></script>
 
     <!-- Flat Picker JS -->
-    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
 
     <!-- Dragula JS -->
-    <script src="assets/libs/dragula/dragula.min.js"></script>
+    <script src="../assets/libs/dragula/dragula.min.js"></script>
 
     <!-- Internal Task  JS -->
-    <script src="assets/js/task-kanban-board.js"></script>
+    <script src="../assets/js/task-kanban-board.js"></script>
 
     <!-- Custom JS -->
-    <script src="assets/js/custom.js"></script>
+    <script src="../assets/js/custom.js"></script>
 
 </body>
 
