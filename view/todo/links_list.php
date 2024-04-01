@@ -41,23 +41,9 @@ if (mysqli_num_rows($result) > 0) {
                         <h6 class="mb-1 fw-medium">
                             <?php echo $row['link_name']; ?>
                         </h6>
-                        <a linkurl="<?php echo $row['link_url']; ?>"
-                            class="mb-1 text-muted contact-mail text-truncate" onclick="redirectUrl(event)">
+                        <a class="mb-1 text-muted contact-mail text-truncate" target="_blank" href="<?php echo $row['link_url']; ?>" style="cursor: pointer;">
                             <?php echo $row['link_url']; ?>
                         </a>
-                        <script>
-                            function redirectUrl(event) {
-                                // Prevent the default action of the link (opening in a new tab)
-                                event.preventDefault();
-
-                                // Get the URL from the link's linkurl attribute
-                                var url = event.target.linkurl;
-                                console.log(url)
-
-                                // Redirect the user to the URL
-                                window.location.href = "";
-                            }
-                        </script>
                     </div>
                     <div class="d-flex align-items-center justify-content-center gap-2">
                         <button type="button" class="btn btn-sm btn-outline-light border">
