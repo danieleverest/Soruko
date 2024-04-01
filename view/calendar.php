@@ -173,7 +173,7 @@ if (!isset($_SESSION['info'])) {
 
                 <!-- Start::add event modal -->
                 <div class="modal fade" id="add-event" tabindex="-1" aria-hidden="true">
-                    <form id="add-event-form" action="../Controller/CalendarController.php" method="post">
+                    <form id="add-event-form" action="../Controller/EventController.php" method="post">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -251,6 +251,7 @@ if (!isset($_SESSION['info'])) {
     <!-- Scroll To Top -->
     <?php include '../components/scrolltotop.php'; ?>
     <!-- Scroll To Top -->
+    <script src="../assets/js/jquery-3.7.1.min.js"></script>
 
     <!-- Popper JS -->
     <script src="../assets/libs/@popperjs/core/umd/popper.min.js"></script>
@@ -286,7 +287,7 @@ if (!isset($_SESSION['info'])) {
     <script src="../assets/libs/moment/moment.js"></script>
 
     <!-- Fullcalendar JS -->
-    <script src="../assets/libs/fullcalendar/index.global.min.js"></script>
+    <script src="../assets/libs/fullcalendar/index.global.js"></script>
     <script src="../assets/js/fullcalendar.js"></script>
 
     <!-- Prism JS -->
@@ -322,6 +323,8 @@ if (!isset($_SESSION['info'])) {
             document.getElementById('edit-event-color').value = color;
             document.getElementById('edit-event-name').value = eventName;
         }
+
+        // getData();
     </script>
 
 </body>
