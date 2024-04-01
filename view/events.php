@@ -99,7 +99,7 @@ if (!isset($_SESSION['info'])) {
 
                 <!-- Start::add event modal -->
                 <div class="modal fade" id="add-event" tabindex="-1" aria-hidden="true">
-                    <form id="add-event-form" action="../Controller/CalendarController.php" method="post">
+                    <form id="add-event-form" action="../Controller/EventController.php" method="post">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -134,7 +134,7 @@ if (!isset($_SESSION['info'])) {
 
                 <!-- Start::edit event modal -->
                 <div class="modal fade" id="edit-event" tabindex="-1" aria-hidden="true">
-                    <form id="edit-event-form" action="../Controller/CalendarController.php" method="post">
+                    <form id="edit-event-form" action="../Controller/EventController.php" method="post">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -170,7 +170,7 @@ if (!isset($_SESSION['info'])) {
 
                 <!-- Start::delete event modal -->
                 <div class="modal fade" id="delete-event" tabindex="-1" aria-hidden="true">
-                    <form id="delete-event-form" action="../Controller/CalendarController.php" method="post">
+                    <form id="delete-event-form" action="../Controller/EventController.php" method="post">
                         <input type="hidden" name="delete-event-id" id="delete-event-id">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
