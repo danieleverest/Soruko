@@ -110,7 +110,7 @@ if (isset($_GET['status'])) {
                             <?php echo $row['task_name']; ?>
                         </div>
                         <p class="mb-0 text-muted op-7 fs-12">
-                            <?php echo $row['finished_date']; ?>
+                            Finished by <?php echo $row['finished_date']; ?>
                         </p>
                     </div>
                     <div class="ms-auto d-flex">

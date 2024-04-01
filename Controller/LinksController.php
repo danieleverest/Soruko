@@ -3,7 +3,7 @@ session_start();
 include_once "../config/db.php";
 
 $linkcategory_name = isset($_POST['linkcategory_name']) ? $_POST['linkcategory_name'] : '';
-$errors = array();
+$error = array();
 
 
 // Check if form is submitted
@@ -75,7 +75,7 @@ if (isset($_POST["add-link"])) {
     $link_url = mysqli_real_escape_string($conn, $_POST['link_url']);
     $category_id = mysqli_real_escape_string($conn, $_POST['category_id']);
 
-    if ($_FILES["image"]["error"] === UPLOAD_ERR_OK) {
+    if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
         // Check if the file is an image
         $fileType = exif_imagetype($_FILES["image"]["tmp_name"]);
         if ($fileType !== false) {
@@ -84,6 +84,7 @@ if (isset($_POST["add-link"])) {
 
             // Specify the directory where uploaded images will be saved
             $uploadDirectory = "uploads/";
+            // $uploadDirectory = "../uploads/"; // Make sure this directory exists and is writable
 
             // Move the uploaded file to the specified directory
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $uploadDirectory . $imageName)) {
@@ -93,37 +94,33 @@ if (isset($_POST["add-link"])) {
                 $sql_insert = "INSERT INTO links (link_name, link_url, category_id, image_path) VALUES ('$link_name', '$link_url', '$category_id', '$imageName')";
 
                 if (mysqli_query($conn, $sql_insert)) {
-                    $_SESSION['success'] = "Link added successfully!";
-                    header('Location: ' . $_SERVER['HTTP_REFERER']);
-                    // header("location: links.php?errorMessage=" . urlencode($errorMessage));
-                    exit();
+                    $successMessage = "Link added successfully!";
+                    // header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    header("Location: ../view/links.php?successMessage=" . urlencode($successMessage));
+                    exit;
                 } else {
                     $_SESSION['error'] = "Error: " . mysqli_error($conn);
                 }
-
-
-                // $sql = "INSERT INTO links (link_name, price, shopcategory_id, description, image) VALUES ('$linkName', $price, $shopcategoryID, '$description', '$imageName')";
-
             } else {
-                // Error moving uploaded file
-                // echo "Error uploading image.";
-                // header("location: links.php?errorMessage=" . urlencode($errorMessage));
-                $errorMessage = "Error uploading image.";
-                // header('Location: ' . $_SERVER['HTTP_REFERER']);
-                // exit();
+                $_SESSION['error'] = "Error moving uploaded image to destination directory.";
             }
         } else {
-            // File is not an image
-            $errorMessage = "Uploaded file is not an image.";
-            // header("location: links.php?errorMessage=" . urlencode($errorMessage));
-            // header('Location: ' . $_SERVER['HTTP_REFERER']);
-            // exit;
+            // $_SESSION['error'] = "Uploaded file is not a valid image.";
+            $errorMessage = "Uploaded file is not a valid image.";
+            header("Location: ../view/links.php?errorMessage=" . urlencode($errorMessage));
+            exit;
         }
     } else {
-        $errorMessage = "Error uploading file: " . $_FILES["image"]["error"];
-        // header("location: shopproducts.php?errorMessage=" . urlencode($errorMessage));
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit();
+        // $_SESSION['error'] = "No file uploaded.";
+        $errorMessage = $_FILES["image"]["error"];
+        header("Location: ../view/links.php?errorMessage=" . urlencode($errorMessage));
+        exit;
+        // $errorMessage = "No file uploaded or there was an error uploading the file.";
+    }
+
+    if (isset($errorMessage)) {
+        header("Location: ../view/links.php?errorMessage=" . urlencode($errorMessage));
+        exit;
     }
 }
 ?>
