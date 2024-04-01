@@ -10,3 +10,19 @@
 .task-btn {
     background-color: rgba(0, 0, 0, 0.3);
 }
+
+.notes-fix-height {
+    height: 180px !important;
+    overflow: auto;
+}
+
+.sticky-note {
+    background-color: #e2e2e2;
+    border: 1px solid #eae9e4;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.sticky-note textarea {
+    resize: none; /* Disable resizing of textarea */
+}

@@ -3214,6 +3214,7 @@ var FullCalendar = (function (exports) {
             sourceId,
             allDay,
             hasEnd,
+            sourceId: refined.id,
             interactive: refined.interactive,
             ui: createEventUi(refined, context),
             extendedProps: Object.assign(Object.assign({}, (refined.extendedProps || {})), extra),
@@ -5086,6 +5087,7 @@ var FullCalendar = (function (exports) {
         }
         addEventSource(sourceInput) {
             let state = this.getCurrentData();
+
             if (sourceInput instanceof EventSourceImpl) {
                 // not already present? don't want to add an old snapshot
                 if (!state.eventSources[sourceInput.internalEventSource.sourceId]) {
@@ -8175,10 +8177,12 @@ var FullCalendar = (function (exports) {
     }
 
     function initEventSources(calendarOptions, dateProfile, context) {
+        // console.log(calendarOptions);
         let activeRange = dateProfile ? dateProfile.activeRange : null;
         return addSources({}, parseInitialSources(calendarOptions, context), activeRange, context);
     }
     function reduceEventSources(eventSources, action, dateProfile, context) {
+        // console.log(eventSources);
         let activeRange = dateProfile ? dateProfile.activeRange : null; // need this check?
         switch (action.type) {
             case 'ADD_EVENT_SOURCES': // already parsed
@@ -8895,6 +8899,7 @@ var FullCalendar = (function (exports) {
             this.props = props;
             this.actionRunner.pause();
             let dynamicOptionOverrides = {};
+
             let optionsData = this.computeOptionsData(props.optionOverrides, dynamicOptionOverrides, props.calendarApi);
             let currentViewType = optionsData.calendarOptions.initialView || optionsData.pluginHooks.initialView;
             let currentViewData = this.computeCurrentViewData(currentViewType, optionsData, props.optionOverrides, dynamicOptionOverrides);
@@ -11621,6 +11626,7 @@ var FullCalendar = (function (exports) {
                     mutatedEvents: createEmptyEventStore(),
                     isEvent: this.dragMeta.create,
                 };
+
                 if (hit) {
                     receivingContext = hit.context;
                     if (this.canDropElOnCalendar(ev.subjectEl, receivingContext)) {
@@ -11632,7 +11638,7 @@ var FullCalendar = (function (exports) {
                             droppableEvent = null;
                         }
                     }
-                }
+                }   
                 this.displayDrag(receivingContext, interaction);
                 // show mirror if no already-rendered mirror element OR if we are shutting down the mirror (?)
                 // TODO: wish we could somehow wait for dispatch to guarantee render
@@ -11643,6 +11649,7 @@ var FullCalendar = (function (exports) {
                 else {
                     disableCursor();
                 }
+
                 if (!isFinal) {
                     dragging.setMirrorNeedsRevert(!droppableEvent);
                     this.receivingContext = receivingContext;
@@ -11656,6 +11663,24 @@ var FullCalendar = (function (exports) {
                     let finalHit = this.hitDragging.finalHit;
                     let finalView = finalHit.context.viewApi;
                     let dragMeta = this.dragMeta;
+
+                    var title = pev.subjectEl.children[0].innerHTML.trim();
+                    var start = new Date(finalHit.dateSpan.range.start).toISOString();
+                    var end = new Date(finalHit.dateSpan.range.end).toISOString();
+                    var color = pev.subjectEl.children[0].style.color;
+
+                    var data = {"title": title, "start": start, "end": end, "add-calendar-event": true, "color": color};
+
+                    window.$.ajax({
+                        type: "POST",
+                        url: "../Controller/CalendarController.php",
+                        data: data,
+                        success: function(res) {
+                        // console.log(res);
+                            console.log(123);
+                        }
+                    });
+
                     receivingContext.emitter.trigger('drop', Object.assign(Object.assign({}, buildDatePointApiWithContext(finalHit.dateSpan, receivingContext)), { draggedEl: pev.subjectEl, jsEvent: pev.origEvent, view: finalView }));
                     if (dragMeta.create) {
                         let addingEvents = eventTupleToStore(droppableEvent);
@@ -11684,6 +11709,7 @@ var FullCalendar = (function (exports) {
                         });
                     }
                 }
+
                 this.receivingContext = null;
                 this.droppableEvent = null;
             };
@@ -11803,6 +11829,7 @@ var FullCalendar = (function (exports) {
             }
             dragging.emitter.on('pointerdown', this.handlePointerDown);
             dragging.emitter.on('dragstart', this.handleDragStart);
+
             new ExternalElementDragging(dragging, settings.eventData); // eslint-disable-line no-new
         }
         destroy() {
