@@ -27,6 +27,8 @@ if (!isset($_SESSION['info'])) {
 
     <link rel="stylesheet" href="../assets/libs/dragula/dragula.min.css">
 
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
 </head>
 
 <body>
@@ -52,911 +54,28 @@ if (!isset($_SESSION['info'])) {
         <div class="main-content app-content">
             <div class="container-fluid">
 
-                <!-- Page Header -->
-                <div class="my-4 page-header-breadcrumb d-flex justify-content-between flex-wrap gap-2">
-                    <h1 class="page-title fw-medium fs-18 mb-2">Sticky Notes</h1>
-                    <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#add-board"><i
-                            class="ri-add-line me-1 fw-medium align-middle"></i>New
-                        Board</button>
-                </div>
-                <!-- Page Header Close -->
-
-                <!-- Start:: row-1 -->
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card custom-card">
-                            <div class="card-body p-3">
-                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                                    <div class="row kanban-board">
-                                        <div class="col-xl-5">
-
-                                        </div>
-                                    </div>
-                                    <div class="avatar-list-stacked">
-                                        <span class="avatar avatar-rounded">
-                                            <img src="../assets/images/faces/2.jpg" alt="img">
-                                        </span>
-                                        <span class="avatar avatar-rounded">
-                                            <img src="../assets/images/faces/8.jpg" alt="img">
-                                        </span>
-                                        <span class="avatar avatar-rounded">
-                                            <img src="../assets/images/faces/2.jpg" alt="img">
-                                        </span>
-                                        <span class="avatar avatar-rounded">
-                                            <img src="../assets/images/faces/10.jpg" alt="img">
-                                        </span>
-                                        <span class="avatar avatar-rounded">
-                                            <img src="../assets/images/faces/4.jpg" alt="img">
-                                        </span>
-                                        <span class="avatar avatar-rounded">
-                                            <img src="../assets/images/faces/13.jpg" alt="img">
-                                        </span>
-                                        <a class="avatar bg-primary avatar-rounded text-fixed-white"
-                                            href="javascript:void(0);">
-                                            +8
-                                        </a>
-                                    </div>
-                                    <div class="d-flex" role="search">
-                                        <input class="form-control me-2" type="search" placeholder="Search"
-                                            aria-label="Search">
-                                        <button class="btn btn-light" type="submit">Search</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End:: row-1 -->
-
                 <!-- Start::row-2 -->
-                <div class="UDON-kanban-board">
+                <div class="UDON-kanban-board pt-3">
                     <div class="kanban-tasks-type new">
                         <div class="pe-3 mb-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="d-block fw-medium fs-15">NEW - 04</span>
                                 <div>
-                                    <a aria-label="anchor" href="javascript:void(0)"
-                                        class="btn btn-sm bg-white text-default border btn-wave" data-bs-toggle="modal"
-                                        data-bs-target="#add-task">
-                                        <i class="ri-add-line align-middle me-1 fw-medium"></i>Add Task
+                                    <a href="javascript:void(0)"
+                                        class="btn btn-sm bg-secondary text-default border btn-wave"
+                                        id="btn_newNote"
+                                    >
+                                        <i class="ri-add-line align-middle me-1 fw-medium"></i>New Note
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="kanban-tasks" id="new-tasks">
-                            <div id="new-tasks-draggable" data-view-btn="new-tasks">
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 28 May</div>
-                                                <div>2 days left</div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-white text-default border">#SPK - 11</span><span
-                                                        class="ms-1 badge bg-outline-primary">UI/UX</span></div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <h6 class="fw-medium mb-1 fs-15">New Dashboard design.</h6>
-                                                <div class="kanban-task-description">Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit, Nulla soluta consectetur sit amet elit
-                                                    dolor sit amet.</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">12</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">02</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/11.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/12.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/7.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 30 May</div>
-                                                <div>2 days left</div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-white text-default border">#SPK - 05</span><span
-                                                        class="ms-1 badge bg-outline-secondary">Marketing</span><span
-                                                        class="ms-1 badge bg-outline-warning">Finance</span></div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <h6 class="fw-medium mb-1 fs-15">Marketing next projects.</h6>
-                                                <div class="kanban-task-description">Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Nulla soluta </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">40</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">08</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/13.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/6.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 02 Jun</div>
-                                                <div>1 days left</div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-white text-default border">#SPK - 08</span><span
-                                                        class="ms-1 badge bg-outline-success">Designing</span></div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <div class="task-image mt-2">
-                                                    <img src="../assets/images/media/media-36.jpg"
-                                                        class="img-fluid rounded kanban-image" alt="">
-                                                </div>
-                                                <h6 class="fw-medium mb-0 mt-2">Design multi usage landing.</h6>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">16</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">28</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/5.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/10.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div id="new-tasks-draggable" class="row" data-view-btn="new-tasks">
+                                <?php
+                                include "notes/notes_list.php";
+                                ?>
                             </div>
-                        </div>
-                        <div class="d-grid view-more-button mt-3">
-                            <button class="btn btn-primary-light btn-wave">View More</button>
-                        </div>
-                    </div>
-                    <div class="kanban-tasks-type todo">
-                        <div class="pe-3 mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="d-block fw-medium fs-15">TODO - 36</span>
-                                <div>
-                                    <a aria-label="anchor" href="javascript:void(0)"
-                                        class="btn btn-sm bg-white text-default border btn-wave" data-bs-toggle="modal"
-                                        data-bs-target="#add-task">
-                                        <i class="ri-add-line align-middle me-1 fw-medium"></i>Add Task
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="kanban-tasks" id="todo-tasks">
-                            <div id="todo-tasks-draggable" data-view-btn="todo-tasks">
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 01 Jun</div>
-                                                <div>10 days left</div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-white text-default border">#SPK - 07</span><span
-                                                        class="ms-1 badge bg-outline-danger">Admin</span><span
-                                                        class="ms-1 badge bg-white border text-default">Authentication</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <h6 class="fw-medium mb-1 fs-15">Adding Authentication Pages.</h6>
-                                                <div class="kanban-task-description">Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Nulla soluta </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">06</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">02</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/9.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/14.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 05 Jun</div>
-                                                <div>14 days left</div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-white text-default border">#SPK - 15</span><span
-                                                        class="ms-1 badge bg-outline-success">Planning</span></div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <div class="task-image mt-2">
-                                                    <img src="../assets/images/media/media-41.jpg"
-                                                        class="img-fluid rounded kanban-image" alt="">
-                                                </div>
-                                                <h6 class="fw-medium mb-0 mt-2">New Project Discussion.</h6>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">17</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">06</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/5.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/10.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-grid view-more-button mt-3">
-                            <button class="btn btn-primary-light btn-wave">View More</button>
-                        </div>
-                    </div>
-                    <div class="kanban-tasks-type in-progress">
-                        <div class="pe-3 mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="d-block fw-medium fs-15">ON GOING - 25</span>
-                                <div>
-                                    <a aria-label="anchor" href="javascript:void(0)"
-                                        class="btn btn-sm bg-white text-default border btn-wave" data-bs-toggle="modal"
-                                        data-bs-target="#add-task">
-                                        <i class="ri-add-line align-middle me-1 fw-medium"></i>Add Task
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="kanban-tasks" id="inprogress-tasks">
-                            <div id="inprogress-tasks-draggable" data-view-btn="inprogress-tasks">
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 02 Jun</div>
-                                                <div>5 days left</div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-white text-default border">#SPK - 13</span><span
-                                                        class="ms-1 badge bg-outline-primary">UI Design</span><span
-                                                        class="ms-1 badge bg-outline-danger">Development</span></div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <h6 class="fw-medium mb-1 fs-15">Create Calendar & Mail pages.</h6>
-                                                <div class="kanban-task-description">Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Nulla soluta </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">05</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">13</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/13.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/6.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 03 Jun</div>
-                                                <div>12 days left</div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-light text-default ms-1">#SPK - 09</span><span
-                                                        class="ms-1 badge bg-outline-info">Product</span></div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <h6 class="fw-medium mb-1 fs-15">Project design Figma,Sketch.</h6>
-                                                <div class="kanban-task-description">Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Nulla soluta </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">02</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">0</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/12.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-grid view-more-button mt-3">
-                            <button class="btn btn-primary-light btn-wave">View More</button>
-                        </div>
-                    </div>
-                    <div class="kanban-tasks-type inreview">
-                        <div class="pe-3 mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="d-block fw-medium fs-15">IN REVIEW - 02</span>
-                                <div>
-                                    <a aria-label="anchor" href="javascript:void(0)"
-                                        class="btn btn-sm bg-white text-default border btn-wave" data-bs-toggle="modal"
-                                        data-bs-target="#add-task">
-                                        <i class="ri-add-line align-middle me-1 fw-medium"></i>Add Task
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="kanban-tasks" id="inreview-tasks">
-                            <div id="inreview-tasks-draggable" data-view-btn="inreview-tasks">
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 05 Jun</div>
-                                                <div>14 days left</div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-white text-default border">#SPK - 15</span><span
-                                                        class="ms-1 badge bg-purple-transparent">Review</span></div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <div class="task-image mt-2">
-                                                    <img src="../assets/images/media/media-43.jpg"
-                                                        class="img-fluid rounded kanban-image" alt="">
-                                                </div>
-                                                <h6 class="fw-medium mb-0 mt-2">Design Architecture strategy.</h6>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">09</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">35</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/3.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/5.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/7.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-grid view-more-button mt-3">
-                            <button class="btn btn-primary-light btn-wave">View More</button>
-                        </div>
-                    </div>
-                    <div class="kanban-tasks-type completed">
-                        <div class="pe-3 mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="d-block fw-medium fs-15">COMPLETED - 36</span>
-                                <div>
-                                    <a aria-label="anchor" href="javascript:void(0)"
-                                        class="btn btn-sm bg-white text-default border btn-wave" data-bs-toggle="modal"
-                                        data-bs-target="#add-task">
-                                        <i class="ri-add-line align-middle me-1 fw-medium"></i>Add Task
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="kanban-tasks" id="completed-tasks">
-                            <div id="completed-tasks-draggable" data-view-btn="completed-tasks">
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 12 Jun</div>
-                                                <div class="text-success"><i
-                                                        class="ri-check-fill me-1 align-middle d-inline-block"></i>Done
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-white text-default border">#SPK - 04</span><span
-                                                        class="ms-1 badge bg-outline-success">UI/UX</span></div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <h6 class="fw-medium mb-1 fs-15">Sash project update.</h6>
-                                                <div class="kanban-task-description">Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Nulla soluta </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">18</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">03</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/6.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/13.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 10 Jun</div>
-                                                <div class="text-success"><i
-                                                        class="ri-check-fill me-1 align-middle d-inline-block"></i>Done
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-white text-default border">#SPK - 10</span><span
-                                                        class="ms-1 badge bg-outline-info">Development</span></div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <h6 class="fw-medium mb-1 fs-15">React JS new version update.</h6>
-                                                <div class="kanban-task-description">Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Nulla soluta </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">22</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">12</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/10.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/11.jpg" alt="img">
-                                                    </span>
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/1.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card custom-card">
-                                    <div class="card-body p-0">
-                                        <div class="p-3 kanban-board-head">
-                                            <div class="d-flex text-muted justify-content-between mb-1 fs-12 fw-medium">
-                                                <div><i
-                                                        class="ri-time-line me-1 align-middle d-inline-block"></i>Created
-                                                    - 07 Jun</div>
-                                                <div class="text-success"><i
-                                                        class="ri-check-fill me-1 align-middle d-inline-block"></i>Done
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="task-badges"><span
-                                                        class="badge bg-white text-default border">#SPK - 16</span><span
-                                                        class="ms-1 badge bg-outline-primary">Discussion</span></div>
-                                                <div class="dropdown">
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="fe fe-more-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-eye-line me-1 align-middle d-inline-block"></i>View</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="javascript:void(0);"><i
-                                                                    class="ri-edit-line me-1 align-middle d-inline-block"></i>Edit</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-content mt-2">
-                                                <div class="task-image mt-2">
-                                                    <img src="../assets/images/media/media-69.jpg"
-                                                        class="img-fluid rounded kanban-image bg-light" alt="">
-                                                </div>
-                                                <h6 class="fw-medium mb-0 mt-2">Project discussion with client.</h6>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 border-top border-block-start-dashed">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="javascript:void(0);" class="me-2 text-primary">
-                                                        <span class="me-1"><i
-                                                                class="ri-thumb-up-fill align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">11</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="text-muted">
-                                                        <span class="me-1"><i
-                                                                class="ri-message-2-line align-middle fw-normal"></i></span><span
-                                                            class="fw-medium fs-12">05</span>
-                                                    </a>
-                                                </div>
-                                                <div class="avatar-list-stacked">
-                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                        <img src="../assets/images/faces/4.jpg" alt="img">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-grid view-more-button mt-3">
-                            <button class="btn btn-primary-light btn-wave">View More</button>
                         </div>
                     </div>
                 </div>
@@ -1150,6 +269,118 @@ if (!isset($_SESSION['info'])) {
 
     <!-- Custom JS -->
     <script src="../assets/js/custom.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            var deleteButtons = document.querySelectorAll('.delete-note');
+            deleteButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var noteId = this.getAttribute('data-id');
+                    deleteNote(noteId);
+                });
+            });
+
+            var newButton = document.getElementById('btn_newNote');
+            newButton.addEventListener('click', function () {
+                createNote();
+            });
+
+            var noteContents = document.querySelectorAll('.note-content');
+            noteContents.forEach(function (noteContent) {
+                noteContent.addEventListener('input', function(event) {
+                    var noteId = this.getAttribute('data-id');
+                    var pinned = this.getAttribute('data-pin');
+                    updateNote(noteId, noteContent);
+                });
+            });
+
+            var notePins = document.querySelectorAll('.pin-note');
+            notePins.forEach(function (notePin) {
+                notePin.addEventListener('click', function () {
+                    var noteId = this.getAttribute('data-id');
+                    updateNotePin(noteId, notePin);
+                });
+            });
+        }
+
+        function deleteNote(noteId) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === XMLHttpRequest.DONE) {
+                    if(xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        window.location.href = window.location.href;
+                    } else {
+                        console.error('Error deleting note.');
+                    }
+                }
+            };
+            xhr.open('POST', 'notes/delete_note.php');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('note_id=' + noteId);
+        }
+
+        function updateNote(noteId, noteContent) {
+            var content = noteContent.value;
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === XMLHttpRequest.DONE) {
+                    if(xhr.status === 200) {
+                        content = xhr.responseText;
+                        noteContent.innerHTML = content;
+                    } else {
+                        console.error('Error Update note.');
+                    }
+                }
+            }
+            xhr.open('POST', 'notes/update_note.php');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('note_id=' + noteId + '&' + 'content=' + content);
+        }
+
+        function updateNotePin(noteId, notePin) {
+            var pinned = notePin.getAttribute('data-pin');
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === XMLHttpRequest.DONE) {
+                    if(xhr.status === 200) {
+                        window.location.href = window.location.href;
+                    } else {
+                        console.error('Error Update note.');
+                    }
+                }
+            }
+            xhr.open('POST', 'notes/update_note.php');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            if(pinned === 'false') pinned = 'true';
+            else pinned = 'false';
+            console.log('note_id=' + noteId + '&' + 'pinned=' + pinned)
+            xhr.send('note_id=' + noteId + '&' + 'pinned=' + pinned);
+        }
+
+        function createNote() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === XMLHttpRequest.DONE) {
+                    if(xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        window.location.href = window.location.href;
+                    } else {
+                        console.error('Error new note.');
+                    }
+                }
+            };
+
+            xhr.open('POST', 'notes/create_note.php');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send();
+        }
+
+    </script>
 
 </body>
 

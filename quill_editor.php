@@ -43,8 +43,8 @@
     <!-- Choices Css -->
     <link rel="stylesheet" href="assets/libs/choices.js/public/assets/styles/choices.min.css">
 
-<link rel="stylesheet" href="assets/libs/quill/quill.snow.css">
-<link rel="stylesheet" href="assets/libs/quill/quill.bubble.css">
+    <link rel="stylesheet" href="assets/libs/quill/quill.snow.css">
+    <link rel="stylesheet" href="assets/libs/quill/quill.bubble.css">
 
 
 </head>
