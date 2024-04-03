@@ -123,4 +123,67 @@ if (isset($_POST["add-link"])) {
         exit;
     }
 }
+
+if (isset ($_POST["edit-link"])) {
+    $edit_link_id = $_POST["edit_link_id"];
+    $edit_link_name = $_POST["edit_link_name"];
+    $edit_link_url = $_POST["edit_link_url"];
+    $edit_link_category_id = $_POST["edit_link_category_id"];
+
+    // Check if a new image has been uploaded
+    if ($_FILES["edit_link_image"]["error"] === UPLOAD_ERR_OK) {
+        // Retrieve the old image name
+        $old_image_sql = "SELECT image_path FROM links WHERE id = '$edit_link_id'";
+        $old_image_result = mysqli_query($conn, $old_image_sql);
+        $old_image_row = mysqli_fetch_assoc($old_image_result);
+        $old_image = $old_image_row['image_path'];
+
+        // Delete the old image
+        unlink("uploads/$old_image");
+
+        // Upload the new image
+        $new_image_name = uniqid("link_image_") . "." . pathinfo($_FILES["edit_link_image"]["name"], PATHINFO_EXTENSION);
+        $uploadDirectory = "uploads/";
+        if (move_uploaded_file($_FILES["edit_link_image"]["tmp_name"], $uploadDirectory . $new_image_name)) {
+            // Update the link data with the new image
+            $sql = "UPDATE links SET link_name = '$edit_link_name', link_url = '$edit_link_url', category_id = '$edit_link_category_id', image_path = '$new_image_name' WHERE id = '$edit_link_id'";
+        } else {
+            // Error moving uploaded file
+            $errorMessage = "Error uploading new image.";
+            header("location: ../view/links.php?errorMessage=" . urlencode($errorMessage));
+            exit;
+        }
+    } else {
+        // No new image uploaded, update link data without changing the image
+        $sql = "UPDATE links SET link_name = '$edit_link_name', link_url = '$edit_link_url', category_id = '$edit_link_category_id' WHERE id = '$edit_link_id'";
+    }
+
+    // Execute the SQL statement
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        $errorMessage = "Error updating link: " . mysqli_error($conn);
+        header("location: ../view/links.php?errorMessage=" . urlencode($errorMessage));
+        exit;
+    }
+
+    $successMessage = "Product updated successfully!";
+    header("location: ../view/links.php?successMessage=" . urlencode($successMessage));
+    exit;
+}
+
+if (isset($_POST['delete-link'])) {
+    $linkId = mysqli_real_escape_string($conn, $_POST['delete-link-id']);
+
+    // Prepare and execute SQL query to delete the link
+    $sql_delete = "DELETE FROM links WHERE id = '$linkId'";
+    if (mysqli_query($conn, $sql_delete)) {
+        $_SESSION['success'] = "Task deleted successfully!";
+    } else {
+        $_SESSION['error'] = "Error: " . mysqli_error($conn);
+    }
+
+    // Redirect back to the previous page
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit();
+}
 ?>
