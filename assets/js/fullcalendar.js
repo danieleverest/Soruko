@@ -2,7 +2,6 @@
   "use strict";
   //_____Calendar Events Intialization
 
-  // sample calendar events data
   // var curYear = moment().format('YYYY');
   // var curMonth = moment().format('MM');
 
@@ -42,6 +41,8 @@
 
           select: function (arg) {
             var title = prompt('Event Title:');
+            console.log(arg.start);
+            
             if (title) {
               var start = new Date(arg.start);
               var startformattedDate = new Date(start.getTime() - (start.getTimezoneOffset() * 60000)).toISOString().slice(0, 19).replace('T', ' ');
@@ -49,7 +50,7 @@
               var end = new Date(arg.end);
               var endformattedDate = new Date(end.getTime() - (end.getTimezoneOffset() * 60000)).toISOString().slice(0, 19).replace('T', ' ');
       
-              var data = {"title": title, "start": startformattedDate, "end": endformattedDate, "add-calendar-event": true, "color": "#ffffff"};
+              var data = {"title": title, "start": startformattedDate, "end": endformattedDate, "add-calendar-event": true, "color": "rgb(185,78,237)"};
 
               // var data = { "title": title, "start": new Date(arg.start).toISOString(), "end": new Date(arg.end).toISOString(), "add-calendar-event": true, "color": "#ffffff" };
 
